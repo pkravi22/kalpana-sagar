@@ -5,226 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kalpana Sonkar | Hero Section</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;700;800;900&display=swap');
+
       * { box-sizing: border-box; }
+
       body {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg, #fff4d6 0%, #f8d665 18%, #fefefe 35%, #eaf3ff 100%);
-        color: #111827;
+        min-height: 100vh;
+        background: #c7dff7;
+        font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
       }
 
-      .wrap {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 40px 24px 80px;
-      }
-
-      .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 32px;
+      .page {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
         align-items: center;
-        min-height: 82vh;
-        background: linear-gradient(135deg, #fffaf0 0%, #f8dce0 30%, #dfeeff 100%);
-        border: 4px solid rgba(217, 4, 41, 0.15);
-        border-radius: 40px;
-        padding-right: 36px;
-            padding-left: 36px;
-        padding-top: 20px;
-        box-shadow: 0 30px 80px rgba(30, 41, 59, 0.18);
+        justify-content: center;
+        padding: 28px 18px;
+      }
+
+      .shell {
+        width: min(100%, 1100px);
+        background: #f3f4ef;
+        border: 8px solid #d9e8f9;
+        border-radius: 24px;
+        padding: 18px 18px 12px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .photo-wrap {
+        width: 100%;
+        background: linear-gradient(135deg, #4b4b4b 0%, #2e2e2e 100%);
+        border-radius: 18px;
+        overflow: hidden;
+        border: 6px solid #f1d867;
+      }
+
+      .photo-wrap img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center top;
+        background: #3a3a3a;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .badge {
         display: inline-block;
-        background: linear-gradient(135deg, #d90429, #8b0a1a);
+        align-self: flex-start;
+        background: linear-gradient(135deg, #1d4ed8, #0f172a);
         color: #fff;
-        padding: 12px 22px;
-        border-radius: 999px;
-        font-weight: 900;
-        letter-spacing: 0.08em;
+        font-size: 12px;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 18px;
-        font-size: 14px;
-        box-shadow: 0 14px 24px rgba(217, 4, 41, 0.3);
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-weight: 700;
+        margin-bottom: 16px;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(3rem, 6vw, 7rem);
-        line-height: 0.9;
-        letter-spacing: -0.06em;
-        text-transform: uppercase;
-        font-weight: 900;
+        font-size: clamp(2.5rem, 4vw, 5rem);
+        line-height: 1.08;
         color: #0f172a;
-        text-shadow: 0 2px 0 rgba(255,255,255,0.7);
+        font-weight: 900;
+        letter-spacing: 0.02em;
       }
 
-      .role {
-        margin-top: 20px;
-        font-size: clamp(1.2rem, 2vw, 2.3rem);
-        line-height: 1.3;
-        font-weight: 800;
-        color: #111827;
-        text-transform: uppercase;
-      }
-
-      .party {
-        margin-top: 12px;
-        font-size: clamp(1rem, 1.6vw, 1.4rem);
+      .subtitle {
+        margin-top: 16px;
+        padding-top: 10px;
+        border-top: 2px solid rgba(15, 23, 42, 0.7);
+        font-size: clamp(1.1rem, 2vw, 2rem);
+        line-height: 1.4;
+        color: #0f172a;
         font-weight: 700;
-        letter-spacing: 0.05em;
-        color: #1d4ed8;
-        text-transform: uppercase;
       }
 
-      .profile-box {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #ffe7a8 0%, #fff9f0 40%, #dfeeff 100%);
-        border-radius: 32px;
-        overflow: visible;
-        box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
-        border: 5px solid rgba(17, 24, 39, 0.08);
-        padding: 14px;
-        min-height: 760px;
+      .status {
+        margin-top: 18px;
+        padding-top: 12px;
+        border-top: 2px solid rgba(15, 23, 42, 0.7);
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+        line-height: 1.4;
+        font-weight: 700;
+        color: #111827;
       }
 
-      .profile-box::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
-        pointer-events: none;
-      }
-
-      .profile-box img {
-        max-width: 100%;
-        max-height: 760px;
-        width: auto;
-        height: auto;
-        display: block;
-        border-radius: 24px;
-       
-        object-fit: cover;
-      }
-
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(180px, 1fr));
-        gap: 18px;
-        margin-top: 22px;
-      }
-
-      .gallery img {
-        width: 100%;
-        height: 360px;
-        object-fit: cover;
-        border-radius: 18px;
-        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
-      }
-
-      @media (max-width: 900px) {
-        .wrap {
-          padding: 0;
-          max-width: 100%;
+      @media (max-width: 700px) {
+        .page {
+          padding: 12px;
         }
 
-        .hero {
+        .shell {
+          border-width: 6px;
+          padding: 10px 10px 12px;
+          border-radius: 18px;
+        }
+
+        .layout {
           grid-template-columns: 1fr;
-          gap: 0;
-          min-height: auto;
-          padding: 0;
-          border-radius: 0;
-          border: none;
-          box-shadow: none;
-          background: linear-gradient(135deg, #fffaf0 0%, #f8dce0 30%, #dfeeff 100%);
+          gap: 12px;
         }
 
-        .hero > div:first-child {
-          order: 2;
-          padding: 0 12px 12px;
+        .photo-wrap {
+          border-width: 4px;
+        }
+
+        .photo-wrap img {
+          max-height: none;
         }
 
         .badge {
-          margin: 12px 12px 10px;
-          padding: 8px 14px;
-          font-size: 11px;
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          padding: 8px 12px;
+          margin-bottom: 12px;
         }
 
         h1 {
-          font-size: clamp(2.1rem, 12vw, 3.2rem);
-          line-height: 1;
-          padding: 0 12px;
+          font-size: clamp(2rem, 10vw, 3rem);
         }
 
-        .role,
-        .party {
-          padding: 0 12px;
+        .subtitle {
+          font-size: clamp(1rem, 4vw, 1.5rem);
         }
 
-        .role {
-          font-size: clamp(1rem, 4.8vw, 1.5rem);
-          margin-top: 10px;
-        }
-
-        .party {
-          font-size: clamp(0.82rem, 3.8vw, 1.05rem);
-          margin-top: 8px;
-        }
-
-        .profile-box {
-          min-height: auto;
-          padding: 0;
-          border: none;
-          border-radius: 0;
-          box-shadow: none;
-          background: transparent;
-          order: 1;
-        }
-
-        .profile-box img {
-          width: 100%;
-          max-height: none;
-          height: auto;
-          display: block;
-          object-fit: cover;
-          border-radius: 0;
-        }
-
-        .gallery {
-          grid-template-columns: 1fr;
-          gap: 10px;
-          margin-top: 0;
-        }
-
-        .gallery img {
-          height: 220px;
-          border-radius: 0;
+        .status {
+          font-size: clamp(0.8rem, 3.2vw, 1.1rem);
         }
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <section class="hero">
-        <div>
-          <div class="badge">BJP • KAUSHAMBI</div>
-          <h1>कल्पना सोनकर</h1>
-          <div class="role">अध्यक्ष जिला पंचायत कौशाम्बी (उत्तर प्रदेश)</div>
-          <div class="party">भारतीय जनता पार्टी (BJP)</div>
-        </div>
+    <div class="page">
+      <div class="shell">
+        <div class="layout">
+          <div class="photo-wrap">
+            <img src="./public/Kalpana.jpeg" alt="Kalpana Sonkar" />
+          </div>
 
-        <div class="profile-box">
-          <img src="./public/Kalpana.jpeg" alt="Kalpana Sonkar" />
+          <div class="info">
+            <div class="badge">BJP • KAUSHAMBI</div>
+            <h1>कल्पना सोनकर</h1>
+            <div class="subtitle">अध्यक्ष जिला पंचायत कौशाम्बी (उत्तर प्रदेश)</div>
+            <div class="status">Website is Under Development ! Launch within 30 Days</div>
+          </div>
         </div>
-      </section>
-
-      <div class="gallery">
-        <img src="./public/Kalpana1.jpeg" alt="Kalpana Sonkar 1" />
-        <img src="./public/Kalpana2.jpeg" alt="Kalpana Sonkar 2" />
-        <img src="./public/Kalpana3.jpeg" alt="Kalpana Sonkar 3" />
       </div>
     </div>
   </body>
