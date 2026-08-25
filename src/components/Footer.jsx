@@ -24,7 +24,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.logoWatermark} aria-hidden="true">
-        <Image src="/logo.webp" alt="BJP logo" width={260} height={260} className={styles.logoImage} priority />
       </div>
       <div className={styles.tricolor} />
       <div className={styles.container}>

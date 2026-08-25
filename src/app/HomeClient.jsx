@@ -106,18 +106,9 @@ export default function HomePage() {
       <section className={styles.hero} aria-label="परिचय">
         <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.heroLogoMark} aria-hidden="true">
-          <Image src="/logo.webp" alt="" width={280} height={280} className={styles.heroLogoImage} priority />
         </div>
 
-        {/* <div className={styles.heroTopBanner}>
-          <Image
-            src="/bjp-topLeaders.png"
-            alt="BJP Top Leaders"
-            width={1920}
-            height={200}
-            priority
-          />
-        </div> */}
+
 
         <div className={styles.heroContainer}>
           <div className={styles.heroPhoto}>

@@ -71,7 +71,7 @@ export default function JanSunwaiClient() {
         style={{ position: 'relative', padding: 0 }}
       >
         <Image
-          src="/kalpanaJi.jpg"
+          src="/Kalpana.jpeg"
           alt="कल्पना सोनकर"
           width={1920}
           height={200}
