@@ -31,7 +31,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <div className={styles.container}>
           <Link href="/" className={styles.brand} aria-label="कल्पना सोनकर – होम">
-            <Image src="/Kalpana.jpeg" alt="Kalpana Sonkar" width={36} height={36} style={{ objectFit: 'cover', borderRadius: '50%' }} priority />
+            <Image src="/logo.webp" alt="BJP Logo" width={36} height={36} style={{ objectFit: 'contain', borderRadius: '50%', background: '#fff', padding: '1px' }} priority />
             <div className={styles.brandText}>
               <span className={styles.brandName}>कल्पना सोनकर</span>
               <span className={styles.brandRole}>जिला पंचायत अध्यक्ष</span>
