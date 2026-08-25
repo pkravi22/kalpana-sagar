@@ -107,11 +107,6 @@ export default function HomePage() {
         <div className={styles.heroBg} aria-hidden="true" />
         <div className={styles.heroLogoMark} aria-hidden="true" />
 
-        {/* Background Large Logo with 40% Opacity */}
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4, zIndex: 0, pointerEvents: 'none' }}>
-          <Image src="/logo.webp" alt="BJP Background" width={800} height={800} style={{ objectFit: 'contain', filter: 'grayscale(0%)' }} priority />
-        </div>
-
         <div className={styles.heroContainer} style={{ position: 'relative', zIndex: 1 }}>
           <div className={styles.heroPhoto}>
             <div className={styles.photoFrame}>
@@ -134,19 +129,13 @@ export default function HomePage() {
 
           <div className={styles.heroContent}>
 
-            <div className={`${styles.heroBadges} reveal`}>
-              <span className="badge badge-bjp">
-                <Image src="/logo.webp" alt="BJP Logo" width={36} height={36} style={{ objectFit: 'contain', borderRadius: "50%" }} priority />
-                BJP • कौशाम्बी</span>
-              <span className="badge badge-rose">जिला पंचायत अध्यक्ष</span>
-            </div>
-
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1rem', marginBottom: '0.5rem' }}>
               <Image src="/logo.webp" alt="BJP Logo" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '50%', background: '#fff', padding: '2px' }} />
-              <span className="hindi" style={{ fontWeight: 'bold', fontSize: '1.4rem', color: '#f97316', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              <span className="hindi" style={{ fontWeight: 'bold', fontSize: '1.4rem', color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
                 || भारतीय जनता पार्टी जिंदाबाद ||
               </span>
             </div>
+
 
             <h1 className={`${styles.heroName} reveal reveal-delay-1 hindi`}>
               कल्पना सोनकर
@@ -162,8 +151,8 @@ export default function HomePage() {
               महिला नेतृत्व से कौशाम्बी का नव-निर्माण।
             </p>
 
-            
-              <div className={styles.heroSocials }>
+
+            <div className={styles.heroSocials}>
               <a href="https://facebook.com/kalpanajitendrasonkar" target="_blank" rel="noreferrer" title="Facebook" className={styles.socialLink} style={{ color: '#1877F2' }}><FacebookIcon className={styles.svgIconLg} /></a>
               <a href="https://instagram.com/kalpanajitendrasonkar" target="_blank" rel="noreferrer" title="Instagram" className={styles.socialLink} style={{ color: '#E4405F' }}><InstagramIcon className={styles.svgIconLg} /></a>
               <a href="https://wa.me/918299223340" target="_blank" rel="noreferrer" title="WhatsApp" className={styles.socialLink} style={{ color: '#25D366' }}><WhatsAppIcon className={styles.svgIconLg} /></a>
@@ -294,7 +283,7 @@ export default function HomePage() {
               if (i === 0 || i === 8 || i === 16) itemClass = `${styles.galleryItem} ${styles.galleryItemLarge}`;
               else if (i === 3 || i === 11 || i === 19) itemClass = `${styles.galleryItem} ${styles.galleryItemWide}`;
               else if (i === 5 || i === 14 || i === 22) itemClass = `${styles.galleryItem} ${styles.galleryItemTall}`;
-              
+
               return (
                 <div key={i} className={`${itemClass} reveal reveal-delay-${(i % 3) + 1}`}>
                   <Image src={img.src} alt={img.alt} fill className={styles.galleryImg} />

@@ -27,7 +27,7 @@ export default function Footer() {
       
       {/* Background Large Logo with 40% Opacity */}
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4, zIndex: 0, pointerEvents: 'none' }}>
-        <img src="/logo.webp" alt="BJP Background" width="600" height="600" style={{ objectFit: 'contain', filter: 'grayscale(0%)' }} />
+        <img src="/logo.webp" alt="BJP Background" width="600" height="600" style={{ objectFit: 'contain', filter: 'grayscale(0%)', borderRadius: '50%' }} />
       </div>
 
       <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
