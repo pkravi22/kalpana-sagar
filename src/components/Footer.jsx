@@ -22,11 +22,15 @@ const WhatsAppIcon = ({ className }) => (
 
 export default function Footer() {
   return (
-    <footer className={styles.footer} role="contentinfo">
-      <div className={styles.logoWatermark} aria-hidden="true">
-      </div>
+    <footer className={styles.footer} role="contentinfo" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className={styles.tricolor} />
-      <div className={styles.container}>
+      
+      {/* Background Large Logo with 40% Opacity */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4, zIndex: 0, pointerEvents: 'none' }}>
+        <img src="/logo.webp" alt="BJP Background" width="600" height="600" style={{ objectFit: 'contain', filter: 'grayscale(0%)' }} />
+      </div>
+
+      <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.grid}>
           <div className={styles.brand}>
             <div className={styles.logo}>

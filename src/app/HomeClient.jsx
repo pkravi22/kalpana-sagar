@@ -103,14 +103,16 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className={styles.hero} aria-label="परिचय">
+      <section className={styles.hero} aria-label="परिचय" style={{ position: 'relative', overflow: 'hidden' }}>
         <div className={styles.heroBg} aria-hidden="true" />
-        <div className={styles.heroLogoMark} aria-hidden="true">
+        <div className={styles.heroLogoMark} aria-hidden="true" />
+
+        {/* Background Large Logo with 40% Opacity */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4, zIndex: 0, pointerEvents: 'none' }}>
+          <Image src="/logo.webp" alt="BJP Background" width={800} height={800} style={{ objectFit: 'contain', filter: 'grayscale(0%)' }} priority />
         </div>
 
-
-
-        <div className={styles.heroContainer}>
+        <div className={styles.heroContainer} style={{ position: 'relative', zIndex: 1 }}>
           <div className={styles.heroPhoto}>
             <div className={styles.photoFrame}>
               <div className={styles.photoGlow} aria-hidden="true" />
@@ -132,10 +134,18 @@ export default function HomePage() {
 
           <div className={styles.heroContent}>
 
-
             <div className={`${styles.heroBadges} reveal`}>
-              <span className="badge badge-bjp"> BJP • कौशाम्बी</span>
+              <span className="badge badge-bjp">
+                <Image src="/logo.webp" alt="BJP Logo" width={36} height={36} style={{ objectFit: 'contain', borderRadius: "50%" }} priority />
+                BJP • कौशाम्बी</span>
               <span className="badge badge-rose">जिला पंचायत अध्यक्ष</span>
+            </div>
+
+            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1rem', marginBottom: '0.5rem' }}>
+              <Image src="/logo.webp" alt="BJP Logo" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '50%', background: '#fff', padding: '2px' }} />
+              <span className="hindi" style={{ fontWeight: 'bold', fontSize: '1.4rem', color: '#f97316', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+                भारतीय जनता पार्टी जिंदाबाद
+              </span>
             </div>
 
             <h1 className={`${styles.heroName} reveal reveal-delay-1 hindi`}>
