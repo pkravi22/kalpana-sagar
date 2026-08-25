@@ -8,8 +8,13 @@ const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 const SITE_NAME = 'Kalpana Sonkar'; // Change for Jitendra
 
 async function getDoc() {
-  const credsPath = path.join(process.cwd(), 'google-credentials.json');
-  const creds = JSON.parse(fs.readFileSync(credsPath, 'utf8'));
+  let creds;
+  if (process.env.GOOGLE_CREDENTIALS) {
+    creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+  } else {
+    const credsPath = path.join(process.cwd(), 'google-credentials.json');
+    creds = JSON.parse(fs.readFileSync(credsPath, 'utf8'));
+  }
 
   const serviceAccountAuth = new JWT({
     email: creds.client_email,
