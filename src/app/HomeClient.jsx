@@ -144,7 +144,7 @@ export default function HomePage() {
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1rem', marginBottom: '0.5rem' }}>
               <Image src="/logo.webp" alt="BJP Logo" width={40} height={40} style={{ objectFit: 'contain', borderRadius: '50%', background: '#fff', padding: '2px' }} />
               <span className="hindi" style={{ fontWeight: 'bold', fontSize: '1.4rem', color: '#f97316', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-                भारतीय जनता पार्टी जिंदाबाद
+                || भारतीय जनता पार्टी जिंदाबाद ||
               </span>
             </div>
 
