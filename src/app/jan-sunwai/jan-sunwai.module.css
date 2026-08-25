@@ -1,0 +1,293 @@
+/* Form Section */
+.formSection { background: #fefcf8; }
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #c2185b, #f8bbd0);
+  border-radius: 2px;
+  margin: 1.25rem 0;
+}
+
+.introList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.introList li {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Form Card */
+.formCard {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(194, 24, 91, 0.12);
+}
+
+.formTitle {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(194, 24, 91, 0.15);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.4rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+  color: #101827;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+}
+.input:focus {
+  border-color: #c2185b;
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.1);
+  background: #fff;
+}
+
+.textarea { resize: vertical; min-height: 120px; }
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  margin-top: 0.5rem;
+}
+.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* Success */
+.successMsg {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.successIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* FAQ */
+.faqSection { background: var(--sky-bg); }
+
+.faqs {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  border: 1px solid rgba(194, 24, 91, 0.1);
+}
+
+.faqQ {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.faqQ:hover { background: rgba(194, 24, 91, 0.04); }
+
+.faqToggle {
+  font-size: 0.8rem;
+  color: #c2185b;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.faqToggle.open { transform: rotate(180deg); }
+
+.faqA {
+  padding: 0 1.5rem 1.25rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Contact */
+.contactSection { background: #fefcf8; }
+
+.contactCard {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(194, 24, 91, 0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(194, 24, 91, 0.08);
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: #fce4ec;
+  border-radius: 50%;
+  color: #c2185b;
+}
+
+.svgContactIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.contactLabel {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.contactValue {
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+a.contactValue:hover { color: #c2185b; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .formGrid { grid-template-columns: 1fr; gap: 2rem; }
+  .formRow { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .formCard { padding: 1.5rem; }
+}
+
+/* Feed Section (Beautiful UI) */
+.feedSection { background: #fdfbf7; padding: 5rem 0; border-top: 1px solid #f3e8d5; }
+.feedGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+.feedCard { 
+  background: #fff; 
+  border-radius: 16px; 
+  padding: 1.75rem; 
+  box-shadow: 0 4px 15px rgba(243, 139, 42, 0.05); 
+  border: 1px solid rgba(243, 139, 42, 0.15); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+.feedCard:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 25px rgba(243, 139, 42, 0.1); 
+}
+.feedHeader { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 1rem; 
+  border-bottom: 1px solid #f3f4f6; 
+  padding-bottom: 0.75rem; 
+}
+.feedName { font-weight: 700; color: #1f2937; font-size: 1.05rem; }
+.feedDate { font-size: 0.8rem; color: #6b7280; font-weight: 500; }
+.feedSubject { 
+  font-size: 0.8rem; 
+  background: #fef3c7; 
+  color: #d97706; 
+  padding: 4px 12px; 
+  border-radius: 20px; 
+  font-weight: 700; 
+  display: inline-block; 
+  margin-bottom: 1rem; 
+}
+.feedProblemBox { margin-bottom: 1.25rem; }
+.feedProblemLabel { 
+  font-weight: 700; 
+  color: #ef4444; 
+  font-size: 0.9rem; 
+  margin-bottom: 0.4rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.4rem; 
+}
+.feedProblemText { color: #374151; line-height: 1.6; font-size: 0.95rem; }
+.feedSolutionBox { 
+  background: #f0fdf4; 
+  padding: 1.25rem; 
+  border-radius: 12px; 
+  border-left: 4px solid #10b981; 
+}
+.feedSolutionLabel { 
+  font-weight: 700; 
+  color: #047857; 
+  font-size: 0.9rem; 
+  margin-bottom: 0.4rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.4rem; 
+}
+.feedSolutionText { color: #065f46; line-height: 1.6; font-size: 0.95rem; }
+.noData { 
+  text-align: center; 
+  color: #6b7280; 
+  grid-column: 1 / -1; 
+  padding: 3rem; 
+  background: #fff; 
+  border-radius: 12px; 
+  border: 1px dashed #d1d5db;
+}

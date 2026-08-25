@@ -1,0 +1,332 @@
+/* About Section */
+.bioSection { background: #fefcf8; }
+
+.bioGrid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 5rem;
+  align-items: start;
+}
+
+.bioPhoto { position: relative; }
+
+.bioImg {
+  width: 100%;
+  height: auto;
+  border-radius: 50% 50% 20px 20px;
+  border: 5px solid #fff;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15), 0 0 0 3px rgba(194, 24, 91, 0.2);
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.bioInfoCard {
+  position: absolute;
+  bottom: -1.5rem;
+  left: -1.5rem;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(194, 24, 91, 0.15);
+}
+
+.bioInfoCard h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+.bioInfoCard p {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+
+.bioTags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.bioText { padding-top: 1rem; }
+
+.profileList {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.profileRow {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.profileLabel {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.profileValue {
+  margin: 0;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 1.05rem;
+  color: #111827;
+  line-height: 1.6;
+}
+
+.profileValue span {
+  display: block;
+  font-weight: 700;
+}
+
+.profileValue small {
+  display: block;
+  color: #4b5563;
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #c2185b, #f8bbd0);
+  border-radius: 2px;
+  margin: 1.25rem 0;
+}
+
+/* Timeline */
+.timelineSection { background: var(--sky-bg); }
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #c2185b, #1b9e67);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timelineItem {
+  position: relative;
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.timelineItem.left {
+  justify-content: flex-end;
+  padding-right: calc(50% + 2.5rem);
+}
+
+.timelineItem.right {
+  justify-content: flex-start;
+  padding-left: calc(50% + 2.5rem);
+}
+
+.timelineCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(194, 24, 91, 0.15);
+  max-width: 340px;
+  width: 100%;
+  position: relative;
+}
+
+.timelineItem.left .timelineCard::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 1.5rem;
+  border: 6px solid transparent;
+  border-left-color: #fff;
+}
+
+.timelineItem.right .timelineCard::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 1.5rem;
+  border: 6px solid transparent;
+  border-right-color: #fff;
+}
+
+.timelineDot {
+  position: absolute;
+  left: 50%;
+  top: 1.5rem;
+  width: 16px;
+  height: 16px;
+  background: #c2185b;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.25);
+  z-index: 1;
+}
+
+.timelineYear {
+  display: inline-block;
+  background: linear-gradient(135deg, #c2185b, #880e4f);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.timelineTitle { margin-bottom: 0.5rem; }
+
+/* Roles */
+.rolesSection { background: #fefcf8; }
+
+.roleCard {
+  padding: 1.75rem;
+  text-align: center;
+  border-top: 4px solid #c2185b;
+}
+
+.roleIcon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.roleTitle { margin-bottom: 0.4rem; }
+
+.roleOrg {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #c2185b;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* Quote */
+.quoteSection {
+  background: linear-gradient(135deg, #1a0533, #4a1068);
+  padding: 5rem 0;
+}
+
+.quote {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.quoteIcon {
+  display: block;
+  font-size: 5rem;
+  color: rgba(194, 24, 91, 0.35);
+  line-height: 1;
+  margin-bottom: -1rem;
+  font-family: serif;
+}
+
+.quote p {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.quoteAuthor {
+  display: block;
+  margin-top: 1.5rem;
+  color: #f8bbd0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bioGrid { grid-template-columns: 1fr; gap: 3rem; }
+  .bioPhoto { max-width: 360px; }
+  .bioInfoCard { position: static; margin-top: 1rem; left: auto; bottom: auto; }
+
+  .profileRow {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .timelineLine { display: none; }
+  .timelineItem { padding: 0 !important; justify-content: flex-start !important; }
+  .timelineCard { max-width: 100%; }
+  .timelineDot { display: none; }
+  .timelineItem.left .timelineCard::after,
+  .timelineItem.right .timelineCard::before { display: none; }
+}
+
+/* ========================
+   GALLERY SECTION
+   ======================== */
+.gallerySection {
+  background: #fff;
+  padding: 4rem 0;
+}
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.galleryItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.galleryItemWide { grid-column: span 2; }
+.galleryItemTall { grid-row: span 2; }
+.galleryItemLarge { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 768px) {
+  .galleryItemWide, .galleryItemTall, .galleryItemLarge {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+.galleryImg {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+.galleryItem:hover .galleryImg {
+  transform: scale(1.05);
+}
+.galleryBadge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #c2185b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 2;
+  pointer-events: none;
+}
