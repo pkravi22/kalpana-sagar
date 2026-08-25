@@ -33,9 +33,8 @@ export async function GET() {
     const sheet = doc.sheetsByIndex[0];
     const rows = await sheet.getRows();
     
-    // Only return rows that are approved (IsPublic === 'TRUE')
+    // Return all submitted rows (not just approved ones)
     const publicData = rows
-      .filter(row => row.get('IsPublic') === 'TRUE')
       .map(row => ({
         id: row.get('ID'),
         date: row.get('Date'),
@@ -45,7 +44,8 @@ export async function GET() {
         message: row.get('Message'),
         response: row.get('Response'),
         respondedAt: row.get('RespondedAt'),
-        site: row.get('Site')
+        site: row.get('Site'),
+        status: row.get('Status') || 'Pending'
       }))
       .reverse(); // Newest first
       

@@ -37,8 +37,12 @@ export default function JanSunwaiClient() {
       })
       .catch(console.error);
   }, []);
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [openFaq, setOpenFaq] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(publicFeed.length / itemsPerPage);
+  const currentFeed = publicFeed.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -190,10 +194,10 @@ export default function JanSunwaiClient() {
         <div className="container">
           <header className="section-header reveal">
             <span className="label">पारदर्शिता और जनसेवा</span>
-            <h2 className="h2 hindi">सफलतापूर्वक सुलझाई गई समस्याएँ</h2>
+            <h2 className="h2 hindi">हाल ही में दर्ज की गई समस्याएँ</h2>
             <div className="divider"><span className="divider-dot" /></div>
             <p className="hindi" style={{ textAlign: 'center', color: '#6b7280', marginTop: '1rem', maxWidth: '600px', margin: '1rem auto 0' }}>
-              यह सूची उन जनसमस्याओं को दर्शाती है जिन पर हमारे कार्यालय द्वारा त्वरित कार्यवाही की गई है और जिनका समाधान हो चुका है।
+              यह सूची उन जनसमस्याओं को दर्शाती है जो हमारे कार्यालय में दर्ज की गई हैं। यहाँ आप अपनी समस्या की वर्तमान स्थिति (लंबित या समाधानित) देख सकते हैं।
             </p>
           </header>
           
@@ -205,14 +209,23 @@ export default function JanSunwaiClient() {
                 <p className="hindi">जैसे ही समस्याओं का समाधान होगा, उन्हें यहाँ प्रदर्शित किया जाएगा।</p>
               </div>
             ) : (
-              publicFeed.map((item, idx) => (
+              currentFeed.map((item, idx) => (
                 <div key={item.id || idx} className={`${styles.feedCard} reveal reveal-delay-${(idx % 3) + 1}`}>
                   <div className={styles.feedHeader}>
                     <span className={`hindi ${styles.feedName}`}>{item.name} <span style={{color: '#9ca3af', fontWeight: 'normal', fontSize: '0.9rem'}}>({item.village})</span></span>
                     <span className={styles.feedDate}>{new Date(item.date).toLocaleDateString('hi-IN')}</span>
                   </div>
                   
-                  <span className={`hindi ${styles.feedSubject}`}>{item.subject}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', marginTop: '0.25rem' }}>
+                    <span className={`hindi ${styles.feedSubject}`}>{item.subject}</span>
+                    <span style={{ 
+                      backgroundColor: item.status === 'Pending' ? '#fef3c7' : item.status === 'Resolved' ? '#d1fae5' : '#e0e7ff',
+                      color: item.status === 'Pending' ? '#92400e' : item.status === 'Resolved' ? '#065f46' : '#3730a3',
+                      padding: '2px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 600 
+                    }}>
+                      {item.status === 'Pending' ? 'लंबित ⏳' : item.status === 'Resolved' ? 'समाधानित ✅' : item.status}
+                    </span>
+                  </div>
                   
                   <div className={styles.feedProblemBox}>
                     <div className={`hindi ${styles.feedProblemLabel}`}>
@@ -233,6 +246,30 @@ export default function JanSunwaiClient() {
               ))
             )}
           </div>
+
+          {totalPages > 1 && (
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
+              <button 
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="btn btn-outline"
+                style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', borderColor: '#d1d5db', color: '#4b5563' }}
+              >
+                ← पिछला
+              </button>
+              <span style={{ alignSelf: 'center', color: '#4b5563', fontWeight: 500 }}>
+                {currentPage} / {totalPages}
+              </span>
+              <button 
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="btn btn-outline"
+                style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', borderColor: '#d1d5db', color: '#4b5563' }}
+              >
+                अगला →
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
