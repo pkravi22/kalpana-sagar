@@ -55,7 +55,7 @@ export default function AchievementsClient() {
   return (
     <>
       {/* PAGE HERO */}
-      <section
+      {/* <section
         className="page-hero"
         aria-label="उपलब्धियाँ"
         style={{ position: 'relative', padding: 0 }}
@@ -65,7 +65,7 @@ export default function AchievementsClient() {
           alt="कल्पना सोनकर"
           width={1920}
           height={600}
-          style={{ width: '100%', marginTop: "2rem", height: '300px', display: 'block' }}
+          style={{ width: '0%', marginTop: "2rem", height: '300px', display: 'block' }}
           priority
         />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.3)', zIndex: 1 }} />
@@ -77,7 +77,7 @@ export default function AchievementsClient() {
             <span style={{ color: '#4e342e', fontWeight: 500 }}>उपलब्धियाँ</span>
           </nav>
         </div>
-      </section>
+      </section> */}
 
       {/* IMPACT BLOCKS */}
       <section className={`section ${styles.impactSection}`} aria-label="प्रमुख उपलब्धियाँ">
@@ -142,7 +142,7 @@ export default function AchievementsClient() {
               if (i === 0 || i === 8 || i === 16) itemClass = `${styles.galleryItem} ${styles.galleryItemLarge}`;
               else if (i === 3 || i === 11 || i === 19) itemClass = `${styles.galleryItem} ${styles.galleryItemWide}`;
               else if (i === 5 || i === 14 || i === 22) itemClass = `${styles.galleryItem} ${styles.galleryItemTall}`;
-              
+
               return (
                 <div key={i} className={`${itemClass} reveal reveal-delay-${(i % 3) + 1}`}>
                   <Image src={img.src} alt={img.alt} fill className={styles.galleryImg} />
