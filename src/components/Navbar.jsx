@@ -8,7 +8,10 @@ import styles from './Navbar.module.css';
 const navLinks = [
   { href: '/', label: 'होम' },
   { href: '/about', label: 'परिचय' },
+  { href: '/vision', label: 'जीवन दर्शन' },
   { href: '/achievements', label: 'उपलब्धियाँ' },
+  { href: '/gallery', label: 'फोटो गैलरी' },
+  { href: '/contact', label: 'संपर्क' },
   { href: '/jan-sunwai', label: 'जनसुनवाई', cta: true },
 ];
 
@@ -23,15 +26,44 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} id="top-nav">
       <div className={styles.tricolor} />
+
+      <div className={styles.topbar}>
+        <div className={styles.topbarInner}>
+          <div className={styles.topbarLeft}>
+            <span className={styles.topBadge}>
+              <Image src="/logo.webp" alt="BJP logo" width={18} height={18} className={styles.topBadgeLogo} priority />
+              भाजपा कौशाम्बी
+            </span>
+            <span className={styles.topSlogan}>राष्ट्र प्रथम, सेवा ही संकल्प</span>
+          </div>
+
+          <div className={styles.topbarRight}>
+            <a href="tel:+918299223340" className={styles.topLink}>
+              <i className="fa-solid fa-phone-volume" />
+              +91 82992 23340
+            </a>
+            <a href="mailto:kalpanajitendrasonkarbjp@gmail.com" className={styles.topLink}>
+              <i className="fa-solid fa-envelope" />
+              kalpanajitendrasonkarbjp@gmail.com
+            </a>
+            <div className={styles.topSocials}>
+              <a href="https://facebook.com/kalpanajitendrasonkar" target="_blank" rel="noreferrer" className={styles.topSocialLink} aria-label="Facebook"><i className="fa-brands fa-facebook-f" /></a>
+              <a href="https://instagram.com/kalpanajitendrasonkar" target="_blank" rel="noreferrer" className={styles.topSocialLink} aria-label="Instagram"><i className="fa-brands fa-instagram" /></a>
+              <a href="https://wa.me/918299223340" target="_blank" rel="noreferrer" className={styles.topSocialLink} aria-label="WhatsApp"><i className="fa-brands fa-whatsapp" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <nav className={styles.nav}>
         <div className={styles.container}>
           <Link href="/" className={styles.brand} aria-label="कल्पना सोनकर – होम">
-            <Image src="/Kalpana.jpeg" alt="Kalpana Sonkar" width={36} height={36} style={{ objectFit: 'cover', borderRadius: '50%' }} priority />
+            <Image src="/Kalpana.jpeg" alt="Kalpana Sonkar" width={40} height={40} style={{ objectFit: 'cover', borderRadius: '50%' }} priority />
             <div className={styles.brandText}>
               <span className={styles.brandName}>कल्पना सोनकर</span>
               <span className={styles.brandRole}>जिला पंचायत अध्यक्ष</span>
@@ -51,10 +83,11 @@ export default function Navbar() {
             {navLinks.map(({ href, label, cta }) => (
               <li key={href}>
                 {cta ? (
-                  <Link href={href} className={styles.navCta}>{label}</Link>
+                  <Link href={href} className={styles.navCta} onClick={closeMenu}>{label}</Link>
                 ) : (
                   <Link
                     href={href}
+                    onClick={closeMenu}
                     className={`${styles.navLink} ${pathname === href ? styles.active : ''}`}
                   >
                     {label}
@@ -68,3 +101,4 @@ export default function Navbar() {
     </header>
   );
 }
+

@@ -18,6 +18,9 @@
 }
 .impactCard:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(194, 24, 91, 0.12); }
 
+/* Ensure impact cards are left-aligned on larger screens for readability */
+.impactCard { text-align: left; }
+
 .impactHeader {
   display: flex;
   align-items: flex-start;
@@ -155,4 +158,9 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+}
+
+@media (max-width: 768px) {
+  /* center content on tablet and smaller for a pleasant mobile layout */
+  .impactCard { text-align: center; }
 }

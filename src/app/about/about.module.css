@@ -195,7 +195,7 @@
 
 .roleCard {
   padding: 1.75rem;
-  text-align: center;
+  text-align: left;
   border-top: 4px solid #c2185b;
 }
 
@@ -271,6 +271,11 @@
   .timelineDot { display: none; }
   .timelineItem.left .timelineCard::after,
   .timelineItem.right .timelineCard::before { display: none; }
+}
+
+@media (max-width: 768px) {
+  /* On narrow screens keep cards centered for readability */
+  .roleCard { text-align: center; }
 }
 
 /* ========================

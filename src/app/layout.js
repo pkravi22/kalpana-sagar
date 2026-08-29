@@ -1,4 +1,31 @@
+import { Noto_Sans_Devanagari, Poppins, Yatra_One } from 'next/font/google';
+import Maintenance from '@/components/Maintenance';
 import './globals.css';
+
+// -------------------------------------------------------------
+// MAINTENANCE TOGGLE:
+// Set to true  -> Shows temporary "We will be live in 2 days" page
+// Set to false -> Instantly restores the full live website!
+// -------------------------------------------------------------
+const IS_UNDER_MAINTENANCE = true;
+
+const notoSans = Noto_Sans_Devanagari({
+  subsets: ['latin', 'devanagari'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-noto-sans',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
+});
+
+const yatraOne = Yatra_One({
+  subsets: ['latin', 'devanagari'],
+  weight: '400',
+  variable: '--font-yatra',
+});
 
 export const metadata = {
   metadataBase: new URL('https://kalpanasonkar.in'),
@@ -9,6 +36,14 @@ export const metadata = {
   description: 'कल्पना सोनकर – जिला पंचायत अध्यक्ष कौशाम्बी (उत्तर प्रदेश)। भारतीय जनता पार्टी। महिला नेतृत्व, जनसेवा और सामाजिक विकास।',
   keywords: ['Kalpana Sonkar', 'कल्पना सोनकर', 'BJP Kaushambi', 'Zila Panchayat Adhyaksha', 'कौशाम्बी', 'भाजपा'],
   authors: [{ name: 'Kalpana Sonkar' }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'hi_IN',
@@ -30,9 +65,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="hi">
+    <html lang="hi" className={`scroll-smooth ${notoSans.variable} ${poppins.variable} ${yatraOne.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -58,7 +95,9 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>{children}</body>
+      <body className="selection:bg-pink-600 selection:text-white">
+        {IS_UNDER_MAINTENANCE ? <Maintenance /> : children}
+      </body>
     </html>
   );
 }

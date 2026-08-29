@@ -1,257 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* =============================================
-   BJP DESIGN SYSTEM — KALPANA SONKAR SITE
-   Graceful Leadership · Rose-Gold Feminine
-   ============================================= */
-
-:root {
-  /* Core palette */
-  --sand-bg: #f3e7b2;
-  --sky-bg: #e9d9ea;
-  --card-bg: #fefcf8;
-  --white: #ffffff;
-  --text: #101827;
-  --muted: #4b5563;
-
-  /* Brand colors */
-  --saffron: #f38b2a;
-  --saffron-deep: #d8760c;
-  --saffron-light: #fef0dd;
-  --green: #1b9e67;
-  --green-deep: #0d7d4d;
-  --blue: #1d4ed8;
-  --blue-dark: #0f172a;
-  --gold: #f2d76c;
-  --gold-deep: #d4a017;
-  --soft-border: #dfeaf7;
-  --line: rgba(16, 24, 39, 0.12);
-
-  /* Kalpana specific - feminine grace */
-  --rose: #be185d;
-  --rose-light: #f9c7d7;
-  --rose-deep: #7a1039;
-  --hero-accent: #be185d;
-  --hero-bg-start: #130b1d;
-  --hero-bg-end: #2e163d;
-
-  /* Spacing */
-  --container: 1180px;
-  --section-py: 5rem;
-  --card-radius: 20px;
-  --btn-radius: 999px;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
-  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
-  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.18);
-  --shadow-rose: 0 0 0 3px rgba(194, 24, 91, 0.25);
+@layer base {
+  body {
+    font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+    background-color: #FCFBF7;
+    color: #212529;
+    overflow-x: hidden;
+  }
 }
 
-/* Reset */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  }
+  .text-shadow-strong {
+    text-shadow: 0 3px 8px rgba(0,0,0,0.45);
+  }
 
-html { scroll-behavior: smooth; }
+  .tricolor-border {
+    background: linear-gradient(90deg, #FF6F00 0%, #FFFFFF 50%, #138808 100%);
+    height: 4px;
+  }
 
-body {
-  font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
-  background: var(--sky-bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  .hero-gradient {
+    background: linear-gradient(135deg, #FF5E00 0%, #FF7B00 35%, #FFA500 75%, #FFB732 100%);
+  }
 
-.hindi {
-  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-}
+  .card-hover-effect {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
 
-/* ========================
-   LAYOUT
-   ======================== */
-.container {
-  width: min(100%, var(--container));
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
+  .card-hover-effect:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px -8px rgba(230, 81, 0, 0.18);
+  }
 
-.section {
-  padding: var(--section-py) 0;
-}
+  .glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
 
-/* ========================
-   TYPOGRAPHY
-   ======================== */
-.h1 {
-  font-family: 'Noto Sans Devanagari', sans-serif;
-  font-size: clamp(2.4rem, 5vw, 5.5rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-  color: var(--blue-dark);
-}
+  .animate-float {
+    animation: subtle-bounce 4s ease-in-out infinite;
+  }
 
-.h2 {
-  font-family: 'Noto Sans Devanagari', sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--blue-dark);
+  .font-yatra {
+    font-family: var(--font-yatra), 'Yatra One', cursive, sans-serif;
+  }
+  .font-hindi {
+    font-family: var(--font-noto-sans), 'Noto Sans Devanagari', sans-serif;
+  }
 }
 
-.h3 {
-  font-family: 'Noto Sans Devanagari', sans-serif;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 700;
-  color: var(--blue-dark);
+@keyframes subtle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.body-lg { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.75; }
-.body-sm { font-size: 0.9rem; color: var(--muted); }
-.label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-/* ========================
-   BUTTONS
-   ======================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2rem;
-  border-radius: var(--btn-radius);
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  white-space: nowrap;
+::-webkit-scrollbar-track {
+  background: #F3E5D8;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
-  color: #fff;
-  box-shadow: 0 10px 26px rgba(190, 24, 93, 0.32), inset 0 1px 0 rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.08);
+::-webkit-scrollbar-thumb {
+  background: #E65100;
+  border-radius: 5px;
 }
-.btn-primary:hover { box-shadow: 0 16px 34px rgba(190, 24, 93, 0.45); }
-
-.btn-secondary {
-  background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
-  color: #fff;
-  box-shadow: 0 10px 26px rgba(27, 158, 103, 0.32), inset 0 1px 0 rgba(255,255,255,0.14);
+::-webkit-scrollbar-thumb:hover {
+  background: #BF360C;
 }
-.btn-secondary:hover { box-shadow: 0 16px 34px rgba(27, 158, 103, 0.46); }
-
-.btn-saffron {
-  background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-deep) 100%);
-  color: #fff;
-  box-shadow: 0 10px 26px rgba(243, 139, 42, 0.34), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-.btn-saffron:hover { box-shadow: 0 16px 34px rgba(243, 139, 42, 0.46); }
-
-.btn-outline {
-  background: rgba(255,255,255,0.02);
-  border: 1.5px solid rgba(190, 24, 93, 0.9);
-  color: var(--rose);
-}
-.btn-outline:hover { background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%); color: #fff; }
-
-/* ========================
-   BADGE
-   ======================== */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--btn-radius);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255,255,255,0.08);
-}
-
-.badge-bjp {
-  background: linear-gradient(135deg, #0f172a 0%, #111c34 100%);
-  color: #f8fafc;
-}
-
-.badge-rose {
-  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
-  color: #fffafc;
-}
-
-.badge-saffron {
-  background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-deep) 100%);
-  color: #fffaf5;
-}
-
-/* ========================
-   CARDS
-   ======================== */
-.card {
-  background: var(--card-bg);
-  border: 1px solid rgba(194, 24, 91, 0.12);
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-/* ========================
-   SECTION HEADER
-   ======================== */
-.section-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
-.section-header .label {
-  display: block;
-  margin-bottom: 0.75rem;
-  color: var(--rose);
-}
-.section-header .divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-.section-header .divider::before,
-.section-header .divider::after {
-  content: '';
-  height: 2px;
-  width: 60px;
-  background: linear-gradient(90deg, transparent, var(--rose-light));
-}
-.section-header .divider::after {
-  background: linear-gradient(90deg, var(--rose-light), transparent);
-}
-.section-header .divider-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--rose);
-  border-radius: 50%;
-}
-
-/* ========================
-   SCROLL REVEAL
-   ======================== */
 .reveal {
   opacity: 0;
   transform: translateY(30px);

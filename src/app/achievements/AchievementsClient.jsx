@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useReveal, useCounter } from '@/hooks/useReveal';
-import styles from './achievements.module.css';
 
 const impactBlocks = [
   { icon: '🌸', title: 'महिला सशक्तिकरण', metric: '200+', metricLabel: 'स्वयं सहायता समूह', desc: 'जिले में महिला स्वयं सहायता समूहों का गठन, जिससे हजारों महिलाएँ आर्थिक रूप से स्वावलंबी बनीं।' },
@@ -30,22 +29,6 @@ const galleryImages = [
   { src: '/DSC_1042.JPG.webp', alt: 'महिला सशक्तिकरण गोष्ठी' },
   { src: '/DSC_1703.JPG.webp', alt: 'विकास कार्यों का निरीक्षण' },
   { src: '/DSC_1712.JPG.webp', alt: 'पार्टी कार्यकर्ताओं संग बैठक' },
-  { src: '/DSC_1819.JPG.webp', alt: 'जनता दरबार व जनसुनवाई' },
-  { src: '/DSC_2140 - Copy - Copy.JPG.webp', alt: 'स्वास्थ्य शिविर उद्घाटन' },
-  { src: '/DSC_2148 - Copy - Copy.JPG.webp', alt: 'विद्यालय पुरस्कार वितरण' },
-  { src: '/DSC_2345 - Copy - Copy.JPG.webp', alt: 'स्थानीय खेलकूद प्रतियोगिता' },
-  { src: '/DSC_2375.JPG.webp', alt: 'स्वच्छता अभियान' },
-  { src: '/DSC_2382.JPG.webp', alt: 'अधिकारी गण के साथ समीक्षा' },
-  { src: '/DSC_2476.JPG.webp', alt: 'पार्टी स्थापना दिवस' },
-  { src: '/DSC_2640 - Copy.JPG.webp', alt: 'सामूहिक विवाह समारोह' },
-  { src: '/DSC_2830.JPG.webp', alt: 'आवास योजना प्रमाण पत्र वितरण' },
-  { src: '/DSC_2835.JPG.webp', alt: 'महिला सुरक्षा सेमिनार' },
-  { src: '/DSC_2854.JPG.webp', alt: 'वृक्षारोपण कार्यक्रम' },
-  { src: '/DSC_2855.JPG.webp', alt: 'रक्तदान शिविर' },
-  { src: '/DSC_3274.JPG.webp', alt: 'जनसभा संबोधन' },
-  { src: '/DSC_3278.JPG.webp', alt: 'नारी शक्ति वंदन कार्यक्रम' },
-  { src: '/DSC_3378.JPG.webp', alt: 'शहीद सम्मान समारोह' },
-  { src: '/DSC_3680.JPG.webp', alt: 'दिवाली मिलन समारोह' },
 ];
 
 export default function AchievementsClient() {
@@ -53,53 +36,53 @@ export default function AchievementsClient() {
   useCounter();
 
   return (
-    <>
+    <div className="bg-[#FCFBF7] text-slate-800">
       {/* PAGE HERO */}
-      {/* <section
-        className="page-hero"
-        aria-label="उपलब्धियाँ"
-        style={{ position: 'relative', padding: 0 }}
-      >
-        <Image
-          src="/Kalpana.jpeg"
-          alt="कल्पना सोनकर"
-          width={1920}
-          height={600}
-          style={{ width: '0%', marginTop: "2rem", height: '300px', display: 'block' }}
-          priority
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.3)', zIndex: 1 }} />
-        <div className="container" style={{ position: 'absolute', top: '60%', left: '20%', transform: 'translate(-50%, -50%)', zIndex: 2, width: '100%', textAlign: 'center' }}>
-          <h1 className="h1 hindi reveal" style={{ color: '#3E2723' }}>उपलब्धियाँ</h1>
-          <nav className="breadcrumb" aria-label="ब्रेडक्रम्ब" style={{ justifyContent: 'center', marginTop: '1rem' }}>
-            <Link href="/" style={{ color: '#4e342e', fontWeight: 500 }}>होम</Link>
-            <span style={{ color: '#4e342e' }}>›</span>
-            <span style={{ color: '#4e342e', fontWeight: 500 }}>उपलब्धियाँ</span>
-          </nav>
+      <section className="relative hero-gradient text-white pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-100">
+              प्रमुख उपलब्धियाँ
+            </span>
+            <h1 className="mt-4 text-4xl md:text-5xl font-black font-yatra leading-tight">
+              विकास और जनसेवा की प्रमुख उपलब्धियाँ
+            </h1>
+            <p className="mt-4 text-lg text-pink-50 max-w-2xl mx-auto">
+              महिला सशक्तिकरण, ग्रामीण विकास और जनकल्याण के क्षेत्र में किए गए समर्पित प्रयास।
+            </p>
+          </div>
         </div>
-      </section> */}
+      </section>
 
       {/* IMPACT BLOCKS */}
-      <section className={`section ${styles.impactSection}`} aria-label="प्रमुख उपलब्धियाँ">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">प्रमुख उपलब्धियाँ</span>
-            <h2 className="h2 hindi">विकास के क्षेत्र</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-          </header>
+      <section className="py-16 md:py-20" aria-label="प्रमुख उपलब्धियाँ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              विकास के क्षेत्र
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              कौशाम्बी की प्रगति के स्तम्भ
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              विभिन्न जनहितकारी योजनाओं और पहलों का विस्तृत विवरण।
+            </p>
+          </div>
 
-          <div className={styles.impactGrid}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {impactBlocks.map((block, i) => (
-              <article key={i} className={`${styles.impactCard} reveal reveal-delay-${(i % 3) + 1}`}>
-                <div className={styles.impactHeader}>
-                  <span className={styles.impactIcon}>{block.icon}</span>
-                  <div className={styles.impactMetric}>
-                    <span className={styles.metricNum}>{block.metric}</span>
-                    <span className={styles.metricLabel}>{block.metricLabel}</span>
+              <article key={i} className="rounded-3xl border border-pink-100 bg-white p-6 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-3xl">{block.icon}</span>
+                    <div className="text-right">
+                      <span className="text-2xl font-black text-pink-600 block leading-tight">{block.metric}</span>
+                      <span className="text-xs font-semibold text-slate-500">{block.metricLabel}</span>
+                    </div>
                   </div>
+                  <h3 className="text-xl font-black text-slate-900 font-yatra mb-2">{block.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{block.desc}</p>
                 </div>
-                <h3 className={`h3 hindi ${styles.impactTitle}`}>{block.title}</h3>
-                <p className="body-sm hindi" style={{ lineHeight: 1.75, color: '#4b5563' }}>{block.desc}</p>
               </article>
             ))}
           </div>
@@ -107,21 +90,28 @@ export default function AchievementsClient() {
       </section>
 
       {/* DISTRICT METRICS */}
-      <section className={styles.metricsSection} aria-label="जिला प्रभाव">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label" style={{ color: '#f8bbd0' }}>जिले का प्रभाव</span>
-            <h2 className="h2 hindi" style={{ color: '#fff' }}>कौशाम्बी में बदलाव</h2>
-          </header>
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#1a0533] to-[#4a1068] text-white" aria-label="जिला प्रभाव">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-200">
+              जिले का प्रभाव
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black font-yatra leading-tight">
+              कौशाम्बी में बदलाव
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-pink-100/90">
+              जमीनी स्तर पर सकारात्मक परिवर्तन के सांख्यिकीय प्रमाण।
+            </p>
+          </div>
 
-          <div className={styles.metricsGrid}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {districtStats.map((s, i) => (
-              <div key={i} className={`${styles.metricCard} reveal reveal-delay-${i + 1}`}>
-                <div className={styles.metricBig}>
+              <div key={i} className="rounded-3xl bg-white/10 backdrop-blur-md border border-pink-200/20 p-6 text-center shadow-lg">
+                <div className="text-4xl sm:text-5xl font-black text-pink-200 flex justify-center items-baseline gap-1">
                   <span data-count={s.count}>0</span>
                   <span>{s.suffix}</span>
                 </div>
-                <p className="hindi" style={{ color: 'rgba(255,255,255,0.75)', marginTop: '0.5rem' }}>{s.label}</p>
+                <p className="mt-3 text-sm sm:text-base font-semibold text-slate-200">{s.label}</p>
               </div>
             ))}
           </div>
@@ -129,45 +119,52 @@ export default function AchievementsClient() {
       </section>
 
       {/* GALLERY SECTION */}
-      <section className={`section ${styles.gallerySection}`} aria-label="फोटो गैलरी">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">स्मृतियाँ</span>
-            <h2 className="h2 hindi">फोटो गैलरी</h2>
-            <div className="divider"><span className="divider-dot" aria-hidden="true" /></div>
-          </header>
-          <div className={styles.galleryGrid}>
-            {galleryImages.map((img, i) => {
-              let itemClass = styles.galleryItem;
-              if (i === 0 || i === 8 || i === 16) itemClass = `${styles.galleryItem} ${styles.galleryItemLarge}`;
-              else if (i === 3 || i === 11 || i === 19) itemClass = `${styles.galleryItem} ${styles.galleryItemWide}`;
-              else if (i === 5 || i === 14 || i === 22) itemClass = `${styles.galleryItem} ${styles.galleryItemTall}`;
+      <section className="py-16 md:py-20" aria-label="फोटो गैलरी">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              स्मृतियाँ
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              विकास और जनसेवा की फोटो गैलरी
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              कार्यक्रमों एवं कार्यों के कुछ अविस्मरणीय क्षण।
+            </p>
+          </div>
 
-              return (
-                <div key={i} className={`${itemClass} reveal reveal-delay-${(i % 3) + 1}`}>
-                  <Image src={img.src} alt={img.alt} fill className={styles.galleryImg} />
-                  <div className={styles.galleryBadge}>{img.alt}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((img, i) => (
+              <div key={i} className="group overflow-hidden rounded-3xl border border-pink-100 bg-white shadow-sm hover:shadow-xl transition-all">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-              );
-            })}
+                <div className="p-4 text-center">
+                  <h4 className="text-base font-bold text-slate-800 font-yatra">{img.alt}</h4>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className={styles.achieveCta} aria-label="जनसुनवाई">
-        <div className="container text-center">
-          <div className="reveal">
-            <h2 className="h2 hindi" style={{ color: '#fff' }}>आपकी समस्या हमारी प्राथमिकता</h2>
-            <p className="hindi" style={{ color: 'rgba(255,255,255,0.7)', marginTop: '0.75rem', fontSize: '1.05rem' }}>
-              जनसुनवाई में भाग लें और अपनी बात सीधे हम तक पहुँचाएँ।
-            </p>
-            <Link href="/jan-sunwai" className="btn btn-primary" style={{ marginTop: '1.75rem', display: 'inline-flex' }}>
-              जनसुनवाई फ़ॉर्म भरें →
+      <section className="py-16 md:py-20 bg-gradient-to-r from-pink-600 to-rose-700 text-white" aria-label="जनसुनवाई">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-yatra leading-tight">
+            आपकी समस्या हमारी प्राथमिकता
+          </h2>
+          <p className="text-lg text-pink-100 max-w-2xl mx-auto leading-relaxed">
+            जनसुनवाई पोर्टल के माध्यम से अपनी बात और शिकायतें सीधे हम तक पहुँचाएँ।
+          </p>
+          <div>
+            <Link href="/jan-sunwai" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-pink-700 font-black text-base hover:bg-pink-50 shadow-xl transition-all transform active:scale-95">
+              <span>जनसुनवाई फ़ॉर्म भरें</span>
+              <i className="fa-solid fa-arrow-right text-sm" />
             </Link>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

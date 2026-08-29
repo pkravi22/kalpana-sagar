@@ -1,9 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useReveal } from '@/hooks/useReveal';
-import styles from './jan-sunwai.module.css';
 
 const faqs = [
   { q: 'जनसुनवाई क्या है?', a: 'जनसुनवाई एक ऐसी व्यवस्था है जिसके माध्यम से आप अपनी समस्याएँ, शिकायतें या सुझाव सीधे कल्पना सोनकर जी तक पहुँचा सकते हैं। महिलाओं की समस्याओं को विशेष प्राथमिकता दी जाती है।' },
@@ -11,35 +8,29 @@ const faqs = [
   { q: 'क्या महिलाएँ सीधे मिल सकती हैं?', a: 'हाँ, महिलाएँ हमारे कौशाम्बी कार्यालय में मंगलवार और गुरुवार को विशेष महिला जनसुनवाई के लिए आ सकती हैं। इसके अलावा सोमवार–शनिवार 10 AM–5 PM भी उपलब्ध रहती हैं।' },
 ];
 
-const MapPinIcon = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
-const PhoneIcon = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>;
-const MailIcon = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>;
-const ClockIcon = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-
 const contacts = [
-  { icon: <MapPinIcon className={styles.svgContactIcon} />, label: 'कार्यालय', value: 'जिला पंचायत कार्यालय, कौशाम्बी, उत्तर प्रदेश' },
-  { icon: <PhoneIcon className={styles.svgContactIcon} />, label: 'दूरभाष', value: '+91 82992 23340', href: 'tel:+918299223340' },
-  { icon: <MailIcon className={styles.svgContactIcon} />, label: 'ईमेल', value: 'kalpanajitendrasonkarbjp@gmail.com', href: 'mailto:kalpanajitendrasonkarbjp@gmail.com' },
-  { icon: <ClockIcon className={styles.svgContactIcon} />, label: 'समय', value: 'सोमवार–शनिवार, 10:00 AM – 5:00 PM' },
+  { icon: '📍', label: 'कार्यालय', value: 'जिला पंचायत कार्यालय, कौशाम्बी, उत्तर प्रदेश', href: 'https://maps.google.com/?q=Kaushambi+UP' },
+  { icon: '📞', label: 'दूरभाष', value: '+91 82992 23340', href: 'tel:+918299223340' },
+  { icon: '✉️', label: 'ईमेल', value: 'kalpanajitendrasonkarbjp@gmail.com', href: 'mailto:kalpanajitendrasonkarbjp@gmail.com' },
+  { icon: '🕒', label: 'समय', value: 'सोमवार–शनिवार, 10:00 AM – 5:00 PM', href: '#' },
 ];
 
 export default function JanSunwaiClient() {
-  useReveal();
-
   const [form, setForm] = useState({ name: '', mobile: '', village: '', subject: '', message: '' });
   const [publicFeed, setPublicFeed] = useState([]);
-  
-  useEffect(() => {
-    fetch('/api/jan-sunwai')
-      .then(res => res.json())
-      .then(data => {
-        if(Array.isArray(data)) setPublicFeed(data);
-      })
-      .catch(console.error);
-  }, []);
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [openFaq, setOpenFaq] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetch('/api/jan-sunwai')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setPublicFeed(data);
+      })
+      .catch(console.error);
+  }, []);
+
   const itemsPerPage = 5;
   const totalPages = Math.ceil(publicFeed.length / itemsPerPage);
   const currentFeed = publicFeed.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -67,261 +58,347 @@ export default function JanSunwaiClient() {
   };
 
   return (
-    <>
+    <div className="bg-[#FCFBF7] text-slate-800">
       {/* PAGE HERO */}
-      <section
-        className="page-hero"
-        aria-label="जनसुनवाई"
-        style={{ position: 'relative', padding: 0 }}
-      >
-        <Image
-          src="/Kalpana.jpeg"
-          alt="कल्पना सोनकर"
-          width={1920}
-          height={200}
-          style={{ width: '100%', height: '300px', marginTop: "80px", display: 'block' }}
-          priority
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.3)', zIndex: 1 }} />
-        <div className="container" style={{ position: 'absolute', top: '65%', left: '25%', transform: 'translate(-50%, -50%)', zIndex: 2, width: '100%', textAlign: 'center' }}>
-          <h1 className="h1 hindi reveal" style={{ color: '#3E2723' }}>जनसुनवाई</h1>
-          <p className="hindi reveal reveal-delay-1" style={{ color: '#4e342e', marginTop: '0.75rem', fontSize: '1.05rem', fontWeight: 600 }}>
-            कल्पना सोनकर जी से अपनी समस्या साझा करें
-          </p>
-          <nav className="breadcrumb" aria-label="ब्रेडक्रम्ब" style={{ justifyContent: 'center', marginTop: '1rem' }}>
-            <Link href="/" style={{ color: '#4e342e', fontWeight: 500 }}>होम</Link>
-            <span style={{ color: '#4e342e' }}>›</span>
-            <span style={{ color: '#4e342e', fontWeight: 500 }}>जनसुनवाई</span>
-          </nav>
+      <section className="relative hero-gradient text-white pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-100">
+              जनसुनवाई
+            </span>
+            <h1 className="mt-4 text-4xl md:text-5xl font-black font-yatra leading-tight">
+              जनसुनवाई एवं समाधान पोर्टल
+            </h1>
+            <p className="mt-4 text-lg text-pink-50 max-w-2xl mx-auto">
+              कल्पना सोनकर जी से अपनी समस्या, सुझाव व शिकायत सीधे साझा करें। हर आवाज़ को प्राथमिकता दी जाएगी।
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* JAN SUNWAI GRID */}
-      <section className={`section ${styles.formSection}`} aria-label="जनसुनवाई फ़ॉर्म">
-        <div className="container">
-          <div className={styles.formGrid}>
-            {/* Intro */}
-            <div className={`${styles.formIntro} reveal`}>
-              <span className="label">महिला नेतृत्व</span>
-              <h2 className="h2 hindi mt-2">अपनी बात हम तक<br />पहुँचाएँ</h2>
-              <div className={styles.divider} />
-              <p className="body-lg hindi" style={{ color: '#4b5563', marginBottom: '1.25rem' }}>
-                कल्पना सोनकर जी का संकल्प है कि जिले की कोई भी महिला
-                अपनी समस्या के साथ अकेली न रहे। जनसुनवाई फ़ॉर्म भरकर
-                आप सीधे उनके कार्यालय तक अपनी बात पहुँचा सकती हैं।
-              </p>
-              <ul className={styles.introList}>
-                <li className="hindi">✅ हर शिकायत को गंभीरता से लिया जाएगा</li>
-                <li className="hindi">✅ 7 दिनों के भीतर प्रतिक्रिया</li>
-                <li className="hindi">✅ महिलाओं की समस्याओं को विशेष प्राथमिकता</li>
-                <li className="hindi">✅ नि:शुल्क सेवा – कोई शुल्क नहीं</li>
-              </ul>
+      {/* JAN SUNWAI SECTION */}
+      <section className="py-16 md:py-20" aria-label="जनसुनवाई फ़ॉर्म">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              महिला नेतृत्व & जनसेवा
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              अपनी बात हम तक पहुँचाएँ
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              कौशाम्बी की हर महिला और नागरिक की सुनवाई के लिए समर्पित सेवा।
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Intro & Highlights Column */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="rounded-3xl border border-pink-100 bg-white p-6 sm:p-8 shadow-sm">
+                <h3 className="text-2xl font-black text-slate-900 font-yatra mb-4">
+                  संकल्प एवं प्राथमिकताएँ
+                </h3>
+                <p className="text-base text-slate-600 leading-relaxed mb-6">
+                  कल्पना सोनकर जी का संकल्प है कि जिले की कोई भी महिला अपनी समस्या के साथ अकेली न रहे। जनसुनवाई फ़ॉर्म भरकर आप सीधे उनके कार्यालय तक अपनी बात पहुँचा सकती हैं।
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 bg-[#fffaf8] border border-pink-100 p-3.5 rounded-2xl">
+                    <span className="w-8 h-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-sm">✓</span>
+                    <span className="text-sm font-semibold text-slate-800">हर शिकायत को गंभीरता से लिया जाएगा</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-[#fffaf8] border border-pink-100 p-3.5 rounded-2xl">
+                    <span className="w-8 h-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-sm">✓</span>
+                    <span className="text-sm font-semibold text-slate-800">7 कार्य दिवसों के भीतर प्राथमिक प्रतिक्रिया</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-[#fffaf8] border border-pink-100 p-3.5 rounded-2xl">
+                    <span className="w-8 h-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-sm">✓</span>
+                    <span className="text-sm font-semibold text-slate-800">महिलाओं की समस्याओं को विशेष प्राथमिकता</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-[#fffaf8] border border-pink-100 p-3.5 rounded-2xl">
+                    <span className="w-8 h-8 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-sm">✓</span>
+                    <span className="text-sm font-semibold text-slate-800">निःशुल्क जनसेवा – कोई शुल्क नहीं</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Office Contact Info Cards */}
+              <div className="rounded-3xl border border-pink-100 bg-white p-6 sm:p-8 shadow-sm">
+                <h3 className="text-xl font-black text-slate-900 font-yatra mb-4">संपर्क सूत्र</h3>
+                <div className="space-y-3">
+                  {contacts.map((c, i) => (
+                    <a
+                      key={i}
+                      href={c.href || '#'}
+                      className="flex items-start gap-4 rounded-2xl bg-[#fffaf8] border border-pink-100 p-4 transition-colors hover:bg-pink-50"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-pink-100 text-xl flex items-center justify-center flex-shrink-0">
+                        {c.icon}
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wider text-slate-500">{c.label}</p>
+                        <p className="mt-0.5 text-sm font-semibold text-slate-800">{c.value}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Form */}
-            <div className={`${styles.formCard} reveal reveal-delay-2`}>
-              {status === 'success' ? (
-                <div className={styles.successMsg}>
-                  <span className={styles.successIcon}>✅</span>
-                  <h3 className="hindi h3">आपकी समस्या दर्ज हो गई!</h3>
-                  <p className="hindi" style={{ color: '#4b5563', marginTop: '0.5rem' }}>
-                    हम शीघ्र ही आपसे संपर्क करेंगे। आपका धन्यवाद।
-                  </p>
-                  <button className="btn btn-secondary" style={{ marginTop: '1.5rem' }} onClick={() => setStatus('idle')}>
-                    नई समस्या दर्ज करें
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} noValidate aria-label="जनसुनवाई फ़ॉर्म">
-                  <h3 className={`h3 hindi ${styles.formTitle}`}>जनसुनवाई फ़ॉर्म</h3>
-
-                  <div className={styles.formRow}>
-                    <div className={styles.field}>
-                      <label htmlFor="js-name" className={`${styles.label} hindi`}>पूरा नाम *</label>
-                      <input id="js-name" name="name" type="text" required value={form.name} onChange={handleChange} className={styles.input} placeholder="आपका नाम" />
+            {/* Form Card */}
+            <div className="lg:col-span-7">
+              <div className="rounded-3xl border border-pink-100 bg-white p-6 sm:p-8 shadow-md">
+                {status === 'success' ? (
+                  <div className="text-center py-10 space-y-4">
+                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+                      ✓
                     </div>
-                    <div className={styles.field}>
-                      <label htmlFor="js-mobile" className={`${styles.label} hindi`}>मोबाइल नंबर *</label>
-                      <input id="js-mobile" name="mobile" type="tel" required value={form.mobile} onChange={handleChange} className={styles.input} placeholder="10 अंकों का नंबर" pattern="[0-9]{10}" />
-                    </div>
-                  </div>
-
-                  <div className={styles.field}>
-                    <label htmlFor="js-village" className={`${styles.label} hindi`}>गाँव / शहर *</label>
-                    <input id="js-village" name="village" type="text" required value={form.village} onChange={handleChange} className={styles.input} placeholder="आपका गाँव या शहर" />
-                  </div>
-
-                  <div className={styles.field}>
-                    <label htmlFor="js-subject" className={`${styles.label} hindi`}>समस्या का विषय *</label>
-                    <select id="js-subject" name="subject" required value={form.subject} onChange={handleChange} className={styles.input}>
-                      <option value="">विषय चुनें</option>
-                      <option value="महिला सुरक्षा">महिला सुरक्षा</option>
-                      <option value="सड़क / पुल">सड़क / पुल</option>
-                      <option value="पेयजल">पेयजल</option>
-                      <option value="बिजली">बिजली</option>
-                      <option value="शिक्षा">शिक्षा</option>
-                      <option value="स्वास्थ्य">स्वास्थ्य</option>
-                      <option value="सरकारी योजना">सरकारी योजना</option>
-                      <option value="महिला सशक्तिकरण">महिला सशक्तिकरण</option>
-                      <option value="अन्य">अन्य</option>
-                    </select>
-                  </div>
-
-                  <div className={styles.field}>
-                    <label htmlFor="js-message" className={`${styles.label} hindi`}>समस्या का विवरण *</label>
-                    <textarea id="js-message" name="message" required rows={5} value={form.message} onChange={handleChange} className={`${styles.input} ${styles.textarea}`} placeholder="अपनी समस्या विस्तार से लिखें..." />
-                  </div>
-
-                  {status === 'error' && (
-                    <p className="hindi" style={{ color: '#dc2626', marginBottom: '1rem', fontSize: '0.9rem' }}>
-                      ❌ कुछ त्रुटि हुई। कृपया पुनः प्रयास करें।
+                    <h3 className="text-2xl font-black text-slate-900 font-yatra">आपकी समस्या सफलतापूर्वक दर्ज हो गई!</h3>
+                    <p className="text-slate-600 max-w-md mx-auto text-sm sm:text-base">
+                      हमारी टीम शीघ्र ही आपके दिए गए मोबाइल नंबर पर संपर्क करेगी। आपका धन्यवाद।
                     </p>
-                  )}
+                    <button
+                      type="button"
+                      className="mt-4 inline-flex items-center px-6 py-3 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-md transition-all"
+                      onClick={() => setStatus('idle')}
+                    >
+                      नई समस्या दर्ज करें
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} noValidate className="space-y-5" aria-label="जनसुनवाई फ़ॉर्म">
+                    <h3 className="text-2xl font-black text-slate-900 font-yatra border-b border-pink-100 pb-3">
+                      जनसुनवाई फ़ॉर्म
+                    </h3>
 
-                  <button type="submit" className={`btn btn-primary ${styles.submitBtn}`} disabled={status === 'loading'}>
-                    {status === 'loading' ? '⏳ प्रेषित हो रहा है...' : 'समस्या दर्ज करें →'}
-                  </button>
-                </form>
-              )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="js-name" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                          पूरा नाम *
+                        </label>
+                        <input
+                          id="js-name"
+                          name="name"
+                          type="text"
+                          required
+                          value={form.name}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 text-sm focus:bg-white focus:border-pink-600 focus:outline-none transition-all"
+                          placeholder="आपका नाम"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="js-mobile" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                          मोबाइल नंबर *
+                        </label>
+                        <input
+                          id="js-mobile"
+                          name="mobile"
+                          type="tel"
+                          required
+                          value={form.mobile}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 text-sm focus:bg-white focus:border-pink-600 focus:outline-none transition-all"
+                          placeholder="10 अंकों का नंबर"
+                          pattern="[0-9]{10}"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="js-village" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                        गाँव / वार्ड / शहर *
+                      </label>
+                      <input
+                        id="js-village"
+                        name="village"
+                        type="text"
+                        required
+                        value={form.village}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 text-sm focus:bg-white focus:border-pink-600 focus:outline-none transition-all"
+                        placeholder="आपका गाँव या शहर"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="js-subject" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                        समस्या का विषय *
+                      </label>
+                      <select
+                        id="js-subject"
+                        name="subject"
+                        required
+                        value={form.subject}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 text-sm focus:bg-white focus:border-pink-600 focus:outline-none transition-all"
+                      >
+                        <option value="">विषय चुनें</option>
+                        <option value="महिला सुरक्षा">महिला सुरक्षा</option>
+                        <option value="सड़क / पुल">सड़क / पुल</option>
+                        <option value="पेयजल">पेयजल</option>
+                        <option value="बिजली">बिजली</option>
+                        <option value="शिक्षा">शिक्षा</option>
+                        <option value="स्वास्थ्य">स्वास्थ्य</option>
+                        <option value="सरकारी योजना">सरकारी योजना</option>
+                        <option value="महिला सशक्तिकरण">महिला सशक्तिकरण</option>
+                        <option value="अन्य">अन्य</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="js-message" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                        समस्या का विवरण *
+                      </label>
+                      <textarea
+                        id="js-message"
+                        name="message"
+                        required
+                        rows={5}
+                        value={form.message}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 text-sm focus:bg-white focus:border-pink-600 focus:outline-none transition-all resize-y"
+                        placeholder="अपनी समस्या विस्तार से लिखें..."
+                      />
+                    </div>
+
+                    {status === 'error' && (
+                      <p className="text-sm font-semibold text-rose-600 bg-rose-50 border border-rose-200 p-3 rounded-xl">
+                        ❌ कुछ त्रुटि हुई। कृपया पुनः प्रयास करें।
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className="w-full py-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-black text-base shadow-lg hover:shadow-xl transition-all transform active:scale-98 disabled:opacity-50"
+                    >
+                      {status === 'loading' ? '⏳ प्रेषित हो रहा है...' : 'समस्या दर्ज करें →'}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      
       {/* PUBLIC FEED */}
-      <section className={`section ${styles.feedSection}`} aria-label="जनसुनवाई फ़ीड">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">पारदर्शिता और जनसेवा</span>
-            <h2 className="h2 hindi">हाल ही में दर्ज की गई समस्याएँ</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-            <p className="hindi" style={{ textAlign: 'center', color: '#6b7280', marginTop: '1rem', maxWidth: '600px', margin: '1rem auto 0' }}>
-              यह सूची उन जनसमस्याओं को दर्शाती है जो हमारे कार्यालय में दर्ज की गई हैं। यहाँ आप अपनी समस्या की वर्तमान स्थिति (लंबित या समाधानित) देख सकते हैं।
-            </p>
-          </header>
-          
-          <div className={styles.feedGrid}>
-            {publicFeed.length === 0 ? (
-              <div className={styles.noData}>
-                <span style={{ fontSize: '2rem', display: 'block', marginBottom: '0.5rem' }}>📋</span>
-                <h3 className="hindi h3" style={{ color: '#4b5563', marginBottom: '0.5rem' }}>अभी कोई सार्वजनिक डेटा उपलब्ध नहीं है</h3>
-                <p className="hindi">जैसे ही समस्याओं का समाधान होगा, उन्हें यहाँ प्रदर्शित किया जाएगा।</p>
-              </div>
-            ) : (
-              currentFeed.map((item, idx) => (
-                <div key={item.id || idx} className={`${styles.feedCard} reveal reveal-delay-${(idx % 3) + 1}`}>
-                  <div className={styles.feedHeader}>
-                    <span className={`hindi ${styles.feedName}`}>{item.name} <span style={{color: '#9ca3af', fontWeight: 'normal', fontSize: '0.9rem'}}>({item.village})</span></span>
-                    <span className={styles.feedDate}>{new Date(item.date).toLocaleDateString('hi-IN')}</span>
-                  </div>
-                  
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', marginTop: '0.25rem' }}>
-                    <span className={`hindi ${styles.feedSubject}`}>{item.subject}</span>
-                    <span style={{ 
-                      backgroundColor: item.status === 'Pending' ? '#fef3c7' : item.status === 'Resolved' ? '#d1fae5' : '#e0e7ff',
-                      color: item.status === 'Pending' ? '#92400e' : item.status === 'Resolved' ? '#065f46' : '#3730a3',
-                      padding: '2px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 600 
-                    }}>
-                      {item.status === 'Pending' ? 'लंबित ⏳' : item.status === 'Resolved' ? 'समाधानित ✅' : item.status}
-                    </span>
-                  </div>
-                  
-                  <div className={styles.feedProblemBox}>
-                    <div className={`hindi ${styles.feedProblemLabel}`}>
-                      <span aria-hidden="true">🔴</span> समस्या:
+      {publicFeed.length > 0 && (
+        <section className="py-16 md:py-20 bg-white" aria-label="जनसुनवाई फ़ीड">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+              <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+                पारदर्शिता
+              </span>
+              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+                हाल की जनसुनवाई एवं शिकायत स्थिति
+              </h2>
+              <p className="mt-4 text-base sm:text-lg text-slate-600">
+                जनता द्वारा दर्ज मामलों की वर्तमान स्थिति एवं समाधान।
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {currentFeed.map((item, idx) => (
+                <div key={item.id || idx} className="rounded-3xl border border-pink-100 bg-[#fffaf8] p-6 shadow-sm">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-pink-100 pb-3 mb-3">
+                    <div>
+                      <span className="text-base font-bold text-slate-900">{item.name}</span>
+                      <span className="text-xs text-slate-500 ml-2">({item.village})</span>
                     </div>
-                    <p className={`hindi ${styles.feedProblemText}`}>"{item.message}"</p>
+                    <div className="flex items-center gap-3 text-xs font-semibold">
+                      <span className="text-slate-500">{new Date(item.date).toLocaleDateString('hi-IN')}</span>
+                      <span
+                        className={`px-3 py-1 rounded-full font-bold text-xs ${
+                          item.status === 'Pending'
+                            ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                            : item.status === 'Resolved'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                            : 'bg-indigo-100 text-indigo-800 border border-indigo-200'
+                        }`}
+                      >
+                        {item.status === 'Pending' ? 'लंबित ⏳' : item.status === 'Resolved' ? 'निस्तारित ✅' : item.status}
+                      </span>
+                    </div>
                   </div>
-                  
+
+                  <p className="text-sm font-bold text-pink-600 mb-1">{item.subject}</p>
+                  <p className="text-sm text-slate-700 leading-relaxed bg-white p-3.5 rounded-2xl border border-pink-100">
+                    "{item.message}"
+                  </p>
+
                   {item.response && (
-                    <div className={styles.feedSolutionBox}>
-                      <div className={`hindi ${styles.feedSolutionLabel}`}>
-                        <span aria-hidden="true">✅</span> समाधान / कार्यवाही:
-                      </div>
-                      <p className={`hindi ${styles.feedSolutionText}`}>{item.response}</p>
+                    <div className="mt-3 bg-emerald-50 border border-emerald-100 p-3.5 rounded-2xl text-xs sm:text-sm text-emerald-900">
+                      <span className="font-bold block mb-1">✅ समाधान / कार्यवाही:</span>
+                      {item.response}
                     </div>
                   )}
                 </div>
-              ))
+              ))}
+            </div>
+
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-4 mt-8">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-pink-50 disabled:opacity-40"
+                >
+                  ← पिछला
+                </button>
+                <span className="text-sm font-bold text-slate-600">
+                  {currentPage} / {totalPages}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:bg-pink-50 disabled:opacity-40"
+                >
+                  अगला →
+                </button>
+              </div>
             )}
           </div>
-
-          {totalPages > 1 && (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
-              <button 
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="btn btn-outline"
-                style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', borderColor: '#d1d5db', color: '#4b5563' }}
-              >
-                ← पिछला
-              </button>
-              <span style={{ alignSelf: 'center', color: '#4b5563', fontWeight: 500 }}>
-                {currentPage} / {totalPages}
-              </span>
-              <button 
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="btn btn-outline"
-                style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', borderColor: '#d1d5db', color: '#4b5563' }}
-              >
-                अगला →
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* FAQ */}
-      <section className={`section ${styles.faqSection}`} aria-label="सामान्य प्रश्न">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">सामान्य प्रश्न</span>
-            <h2 className="h2 hindi">अक्सर पूछे जाने वाले प्रश्न</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-          </header>
+      <section className="py-16 md:py-20" aria-label="सामान्य प्रश्न">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              सहायता
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              अक्सर पूछे जाने वाले प्रश्न
+            </h2>
+          </div>
 
-          <div className={styles.faqs}>
+          <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className={`${styles.faqItem} reveal reveal-delay-${i + 1}`}>
-                <button className={`${styles.faqQ} hindi`} onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}>
+              <div key={i} className="rounded-3xl border border-pink-100 bg-white overflow-hidden shadow-sm">
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-6 text-left font-yatra text-lg font-black text-slate-900 hover:text-pink-600 transition-colors"
+                >
                   <span>{faq.q}</span>
-                  <span className={`${styles.faqToggle} ${openFaq === i ? styles.open : ''}`}>▼</span>
+                  <span className={`text-sm transition-transform duration-200 ${openFaq === i ? 'rotate-180 text-pink-600' : 'text-slate-400'}`}>
+                    ▼
+                  </span>
                 </button>
                 {openFaq === i && (
-                  <div className={`${styles.faqA} hindi`}>{faq.a}</div>
+                  <div className="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-pink-50 pt-4">
+                    {faq.a}
+                  </div>
                 )}
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* CONTACT */}
-      <section className={`section ${styles.contactSection}`} aria-label="संपर्क">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">संपर्क जानकारी</span>
-            <h2 className="h2 hindi">हमसे मिलें</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-          </header>
-
-          <div className="grid-4">
-            {contacts.map((c, i) => (
-              <div key={i} className={`${styles.contactCard} reveal reveal-delay-${i + 1}`}>
-                <span className={styles.contactIcon}>{c.icon}</span>
-                <p className={`${styles.contactLabel}`}>{c.label}</p>
-                {c.href ? (
-                  <a href={c.href} className={`hindi ${styles.contactValue}`}>{c.value}</a>
-                ) : (
-                  <p className={`hindi ${styles.contactValue}`}>{c.value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

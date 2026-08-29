@@ -2,15 +2,37 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
 export async function POST(request) {
-  const { password } = await request.json();
-  if (password === process.env.ADMIN_PASSWORD) {
-    (await cookies()).set('admin_token', 'authenticated', { maxAge: 60 * 60 * 24 });
-    return NextResponse.json({ success: true });
+  try {
+    const { email, password } = await request.json();
+
+    const validEmail = 'pramendrasinghravi@gmail.com';
+    const validPassword = 'admin_kaushambi@123';
+
+    const isMatch =
+      (email === validEmail && password === validPassword) ||
+      (process.env.ADMIN_EMAIL && email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) ||
+      (!email && password === (process.env.ADMIN_PASSWORD || validPassword));
+
+    if (isMatch) {
+      const cookieStore = await cookies();
+      cookieStore.set('admin_token', 'authenticated', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+        maxAge: 60 * 60 * 24,
+      });
+      return NextResponse.json({ success: true });
+    }
+
+    return NextResponse.json({ error: 'अमान्य ईमेल या पासवर्ड' }, { status: 401 });
+  } catch (err) {
+    return NextResponse.json({ error: 'सर्वर त्रुटि' }, { status: 500 });
   }
-  return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
 }
 
 export async function DELETE() {
-  (await cookies()).delete('admin_token');
+  const cookieStore = await cookies();
+  cookieStore.delete('admin_token');
   return NextResponse.json({ success: true });
 }

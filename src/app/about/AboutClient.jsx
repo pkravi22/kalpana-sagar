@@ -2,7 +2,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useReveal } from '@/hooks/useReveal';
-import styles from './about.module.css';
+
+const profileDetails = [
+  { label: 'नाम', value: 'कल्पना सोनकर', sub: 'अध्यक्ष, जिला पंचायत कौशाम्बी' },
+  { label: 'पति का नाम', value: 'श्री जितेन्द्र कुमार सोनकर', sub: 'पुत्र ब्लॉक प्रमुख, सिराथू, कौशाम्बी' },
+  { label: 'जन्मतिथि', value: '15 अक्टूबर 1994' },
+  { label: 'वर्तमान पता', value: 'वार्ड नं. 10, अशोक नगर, ओसा चौहा, नगर पालिका परिषद, मझनपुर, कौशाम्बी' },
+  { label: 'बूथ संख्या', value: '35 (दुग्गांधी इंटर कॉलेज, ओसा चौहा)' },
+  { label: 'विधान सभा क्षेत्र', value: '252 मझनपुर (सुरक्षित)' },
+  { label: 'लोक सभा क्षेत्र', value: '50 कौशाम्बी (सुरक्षित)' },
+  { label: 'शैक्षिक योग्यता', value: 'एम.ए. (राजनीति शास्त्र), डी.एल.एड.' },
+  { label: 'मोबाइल नं.', value: '+91 82992 23340' },
+  { label: 'जाति / वर्ग', value: 'क्षत्रिय (सोनकर), अनुसूचित जाति' },
+];
 
 const timeline = [
   { year: '2015', title: 'BJP में सक्रियता', desc: 'भारतीय जनता पार्टी की महिला मोर्चा में सक्रिय भागीदारी की शुरुआत।' },
@@ -31,140 +43,116 @@ const galleryImages = [
   { src: '/DSC_1042.JPG.webp', alt: 'महिला सशक्तिकरण गोष्ठी' },
   { src: '/DSC_1703.JPG.webp', alt: 'विकास कार्यों का निरीक्षण' },
   { src: '/DSC_1712.JPG.webp', alt: 'पार्टी कार्यकर्ताओं संग बैठक' },
-  { src: '/DSC_1819.JPG.webp', alt: 'जनता दरबार व जनसुनवाई' },
-  { src: '/DSC_2140 - Copy - Copy.JPG.webp', alt: 'स्वास्थ्य शिविर उद्घाटन' },
-  { src: '/DSC_2148 - Copy - Copy.JPG.webp', alt: 'विद्यालय पुरस्कार वितरण' },
-  { src: '/DSC_2345 - Copy - Copy.JPG.webp', alt: 'स्थानीय खेलकूद प्रतियोगिता' },
-  { src: '/DSC_2375.JPG.webp', alt: 'स्वच्छता अभियान' },
-  { src: '/DSC_2382.JPG.webp', alt: 'अधिकारी गण के साथ समीक्षा' },
-  { src: '/DSC_2476.JPG.webp', alt: 'पार्टी स्थापना दिवस' },
-  { src: '/DSC_2640 - Copy.JPG.webp', alt: 'सामूहिक विवाह समारोह' },
-  { src: '/DSC_2830.JPG.webp', alt: 'आवास योजना प्रमाण पत्र वितरण' },
-  { src: '/DSC_2835.JPG.webp', alt: 'महिला सुरक्षा सेमिनार' },
-  { src: '/DSC_2854.JPG.webp', alt: 'वृक्षारोपण कार्यक्रम' },
-  { src: '/DSC_2855.JPG.webp', alt: 'रक्तदान शिविर' },
-  { src: '/DSC_3274.JPG.webp', alt: 'जनसभा संबोधन' },
-  { src: '/DSC_3278.JPG.webp', alt: 'नारी शक्ति वंदन कार्यक्रम' },
-  { src: '/DSC_3378.JPG.webp', alt: 'शहीद सम्मान समारोह' },
-  { src: '/DSC_3680.JPG.webp', alt: 'दिवाली मिलन समारोह' },
 ];
 
 export default function AboutClient() {
   useReveal();
 
   return (
-    <>
+    <div className="bg-[#FCFBF7] text-slate-800">
       {/* PAGE HERO */}
-      
+      <section className="relative hero-gradient text-white pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-100">
+              जीवन परिचय
+            </span>
+            <h1 className="mt-4 text-4xl md:text-5xl font-black font-yatra leading-tight">
+              कल्पना सोनकर – परिचय एवं जीवन यात्रा
+            </h1>
+            <p className="mt-4 text-lg text-pink-50 max-w-2xl mx-auto">
+              कौशाम्बी जिला पंचायत अध्यक्ष के रूप में जनसेवा, महिला सशक्तिकरण और समर्पित विकास यात्रा।
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* BIO SECTION */}
-      <section className={`section ${styles.bioSection}`} aria-label="जीवन परिचय">
-        <div className="container">
-          <div className={styles.bioGrid}>
-            <div className={`${styles.bioText} reveal`}>
-              <span className="label">जीवन परिचय</span>
-              <h2 className="h2 hindi mt-2">महिला नेतृत्व की<br />प्रेरणादायक कहानी</h2>
-              <div className={styles.divider} />
-              <p className="body-lg hindi" style={{ color: '#4b5563', marginBottom: '1rem' }}>
-                कल्पना सोनकर जी का जन्म कौशाम्बी जिले में एक साधारण परिवार में हुआ। 
-                उनका जीवन स्वयं एक संघर्ष से सफलता की प्रेरणादायक कहानी है। 
-                बचपन से ही उनमें सामाजिक न्याय और महिला सशक्तिकरण की गहरी चाह थी।
-              </p>
-              <p className="body-lg hindi" style={{ color: '#4b5563', marginBottom: '1rem' }}>
-                भारतीय जनता पार्टी की महिला मोर्चा से जुड़ने के बाद उन्होंने 
-                कौशाम्बी की महिलाओं को संगठित किया और उनके अधिकारों के लिए 
-                अथक परिश्रम किया। उनकी लोकप्रियता और कार्यक्षमता ने उन्हें 
-                जिला पंचायत अध्यक्ष के पद तक पहुँचाया।
-              </p>
-              <p className="body-lg hindi" style={{ color: '#4b5563', marginBottom: '1rem' }}>
-                अनुसूचित जाति वर्ग से आने के बावजूद उन्होंने समाज की सभी 
-                महिलाओं के उत्थान के लिए काम किया। उनके नेतृत्व में जिले में 
-                महिला स्वयं सहायता समूहों का विस्तार हुआ और हजारों महिलाएँ 
-                आर्थिक रूप से स्वावलंबी बनीं।
-              </p>
-              <p className="body-lg hindi" style={{ color: '#4b5563' }}>
-                प्रधानमंत्री नरेंद्र मोदी जी की "नारी शक्ति वंदन" की भावना को 
-                जमीन पर उतारते हुए उन्होंने जिले की हर बेटी को बेहतर भविष्य 
-                दिलाने का प्रण किया है।
-              </p>
+      <section className="py-16 md:py-20" aria-label="जीवन परिचय">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              व्यक्तिगत परिचय
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              महिला नेतृत्व की प्रेरणादायक कहानी
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              संघर्ष से सफलता तक की यात्रा, समाज सेवा और कौशाम्बी के सर्वांगीण विकास का अटूट संकल्प।
+            </p>
+          </div>
 
-              <dl className={styles.profileList} aria-label="व्यक्तिगत परिचय">
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>नाम :</dt>
-                  <dd className={styles.profileValue}>
-                    <span>कल्पना सोनकर</span>
-                    <small>अध्यक्ष जिला पंचायत कौशाम्बी</small>
-                  </dd>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Bio Narrative & Profile Table */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="rounded-3xl border border-pink-100 bg-white p-6 sm:p-8 shadow-sm space-y-4">
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                  कल्पना सोनकर जी का जन्म कौशाम्बी जिले में एक साधारण परिवार में हुआ। उनका जीवन स्वयं एक संघर्ष से सफलता की प्रेरणादायक कहानी है। बचपन से ही उनमें सामाजिक न्याय और महिला सशक्तिकरण की गहरी चाह थी।
+                </p>
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                  भारतीय जनता पार्टी की महिला मोर्चा से जुड़ने के बाद उन्होंने कौशाम्बी की महिलाओं को संगठित किया और उनके अधिकारों के लिए अथक परिश्रम किया। उनकी लोकप्रियता और कार्यक्षमता ने उन्हें जिला पंचायत अध्यक्ष के पद तक पहुँचाया।
+                </p>
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                  अनुसूचित जाति वर्ग से आने के बावजूद उन्होंने समाज की सभी महिलाओं के उत्थान के लिए काम किया। उनके नेतृत्व में जिले में महिला स्वयं सहायता समूहों का विस्तार हुआ और हजारों महिलाएँ आर्थिक रूप से स्वावलंबी बनीं।
+                </p>
+              </div>
+
+              {/* Profile Details Card */}
+              <div className="rounded-3xl border border-pink-100 bg-white p-6 sm:p-8 shadow-sm">
+                <h3 className="text-2xl font-black text-slate-900 font-yatra mb-6 border-b border-pink-100 pb-3">
+                  प्रमुख विवरण
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {profileDetails.map((item, idx) => (
+                    <div key={idx} className="bg-[#fffaf8] border border-pink-100/80 rounded-2xl p-4">
+                      <span className="text-xs font-bold uppercase tracking-wider text-pink-600 block mb-1">
+                        {item.label}
+                      </span>
+                      <p className="text-sm sm:text-base font-bold text-slate-800 leading-snug">
+                        {item.value}
+                      </p>
+                      {item.sub && (
+                        <p className="text-xs text-slate-500 mt-0.5">{item.sub}</p>
+                      )}
+                    </div>
+                  ))}
                 </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>पति का नाम :</dt>
-                  <dd className={styles.profileValue}>
-                    <span>श्री जितेन्द्र कुमार सोनकर</span>
-                    <small>पुत्र ब्लॉक प्रमुख, सिराथू, कौशाम्बी</small>
-                  </dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>जन्मतिथि :</dt>
-                  <dd className={styles.profileValue}>15 अक्टूबर 1994</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>वर्तमान पता :</dt>
-                  <dd className={styles.profileValue}>वार्ड नं. 10, अशोक नगर, ओसा चौरहा, नगर पालिका परिषद, मझनपुर, कौशाम्बी</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>बूथ संख्या :</dt>
-                  <dd className={styles.profileValue}>35 (दुग्गांधी इंटर कॉलेज, ओसा चौरहा)</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>विधान सभा क्षेत्र :</dt>
-                  <dd className={styles.profileValue}>252 मझनपुर (सुरक्षित)</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>लोक सभा क्षेत्र :</dt>
-                  <dd className={styles.profileValue}>50 कौशाम्बी (सुरक्षित)</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>शैक्षिक योग्यता :</dt>
-                  <dd className={styles.profileValue}>एम.ए. (राजनीति शास्त्र), डी.एल.एड.</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>मोबाइल नं. :</dt>
-                  <dd className={styles.profileValue}>8299223340</dd>
-                </div>
-
-                <div className={styles.profileRow}>
-                  <dt className={styles.profileLabel}>जाति :</dt>
-                  <dd className={styles.profileValue}>क्षत्रिय (सोनकर), अनुसूचित जाति</dd>
-                </div>
-              </dl>
-
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-                <Link href="/achievements" className="btn btn-primary">उपलब्धियाँ देखें →</Link>
-                <Link href="/jan-sunwai" className="btn btn-outline">जनसुनवाई में भाग लें</Link>
               </div>
             </div>
 
-            <div className={`${styles.bioPhoto} reveal reveal-delay-1`}>
-              <Image
-                src="/Kalpana.jpeg"
-                alt="कल्पना सोनकर"
-                width={400}
-                height={520}
-                className={styles.bioImg}
-              />
-              <div className={styles.bioInfoCard}>
-                <h3 className="hindi">कल्पना सोनकर</h3>
-                <p className="hindi">जिला पंचायत अध्यक्ष, कौशाम्बी</p>
-                <div className={styles.bioTags}>
-                  <span className="badge badge-bjp">BJP</span>
-                  <span className="badge badge-rose">कौशाम्बी</span>
+            {/* Photo & Quick Actions */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="rounded-3xl border border-pink-100 bg-white p-4 shadow-sm overflow-hidden text-center">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl">
+                  <Image
+                    src="/Kalpana.jpeg"
+                    alt="कल्पना सोनकर"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="mt-4 p-2">
+                  <h3 className="text-2xl font-black text-slate-900 font-yatra">कल्पना सोनकर</h3>
+                  <p className="text-sm font-semibold text-slate-600 mt-1">अध्यक्ष जिला पंचायत, कौशाम्बी</p>
+                  <div className="mt-3 flex justify-center gap-2">
+                    <span className="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-bold rounded-full border border-pink-200">BJP</span>
+                    <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full border border-amber-200">कौशाम्बी</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-3xl bg-gradient-to-r from-pink-600 to-rose-700 text-white p-6 shadow-lg flex flex-col gap-3">
+                <h4 className="text-xl font-black font-yatra">त्वरित संपर्क एवं जानकारी</h4>
+                <p className="text-xs sm:text-sm text-pink-100 leading-relaxed">
+                  उपलब्धियों के बारे में विस्तार से जानें या जनसुनवाई पोर्टल के माध्यम से अपनी समस्या साझा करें।
+                </p>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  <Link href="/achievements" className="px-4 py-2.5 rounded-xl bg-white text-pink-700 font-bold text-xs sm:text-sm hover:bg-pink-50 transition-colors shadow-md">
+                    उपलब्धियाँ देखें →
+                  </Link>
+                  <Link href="/jan-sunwai" className="px-4 py-2.5 rounded-xl bg-black/25 text-white font-bold text-xs sm:text-sm hover:bg-black/40 transition-colors border border-white/20">
+                    जनसुनवाई में भाग लें
+                  </Link>
                 </div>
               </div>
             </div>
@@ -173,91 +161,104 @@ export default function AboutClient() {
       </section>
 
       {/* TIMELINE */}
-      <section className={`section ${styles.timelineSection}`} aria-label="राजनीतिक यात्रा">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">राजनीतिक यात्रा</span>
-            <h2 className="h2 hindi">संकल्प से सिद्धि तक</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-          </header>
+      <section className="py-16 md:py-20 bg-white" aria-label="राजनीतिक यात्रा">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              राजनीतिक यात्रा
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              संकल्प से सिद्धि तक
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              वर्ष दर वर्ष जनसेवा और संगठन में दिए गए महत्वपूर्ण योगदान की समयरेखा।
+            </p>
+          </div>
 
-          <div className={styles.timeline}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {timeline.map((item, i) => (
-              <div key={i} className={`${styles.timelineItem} ${i % 2 === 0 ? styles.left : styles.right} reveal reveal-delay-${(i % 4) + 1}`}>
-                <div className={styles.timelineCard}>
-                  <span className={styles.timelineYear}>{item.year}</span>
-                  <h3 className={`h3 hindi ${styles.timelineTitle}`}>{item.title}</h3>
-                  <p className={`body-sm hindi`} style={{ color: '#4b5563', lineHeight: 1.7 }}>{item.desc}</p>
+              <div key={i} className="rounded-3xl border border-pink-100 bg-[#fffaf8] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                <div>
+                  <span className="inline-block px-3 py-1 rounded-full bg-pink-600 text-white text-xs font-black">
+                    {item.year}
+                  </span>
+                  <h3 className="mt-4 text-xl font-black text-slate-900 font-yatra">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
-                <div className={styles.timelineDot} aria-hidden="true" />
               </div>
             ))}
-            <div className={styles.timelineLine} aria-hidden="true" />
           </div>
         </div>
       </section>
 
       {/* LEADERSHIP ROLES */}
-      <section className={`section ${styles.rolesSection}`} aria-label="नेतृत्व भूमिकाएँ">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">दायित्व एवं भूमिकाएँ</span>
-            <h2 className="h2 hindi">नेतृत्व के क्षेत्र</h2>
-            <div className="divider"><span className="divider-dot" /></div>
-          </header>
+      <section className="py-16 md:py-20" aria-label="नेतृत्व भूमिकाएँ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              दायित्व एवं भूमिकाएँ
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              नेतृत्व के प्रमुख क्षेत्र
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              विभिन्न समितियों और सामाजिक अभियानों के माध्यम से विकास का संचालन।
+            </p>
+          </div>
 
-          <div className="grid-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {roles.map((r, i) => (
-              <article key={i} className={`card ${styles.roleCard} reveal reveal-delay-${(i % 3) + 1}`}>
-                <span className={styles.roleIcon}>{r.icon}</span>
-                <h3 className={`h3 hindi ${styles.roleTitle}`}>{r.title}</h3>
-                <p className={`${styles.roleOrg}`}>{r.org}</p>
-                <p className={`body-sm hindi`} style={{ lineHeight: 1.7, color: '#4b5563' }}>{r.desc}</p>
-              </article>
+              <div key={i} className="rounded-3xl border border-pink-100 bg-white p-6 shadow-sm hover:shadow-lg transition-all">
+                <span className="text-3xl block mb-3">{r.icon}</span>
+                <h3 className="text-xl font-black text-slate-900 font-yatra">{r.title}</h3>
+                <p className="text-xs font-bold uppercase tracking-wider text-pink-600 mt-1">{r.org}</p>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{r.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* GALLERY SECTION */}
-      <section className={`section ${styles.gallerySection}`} aria-label="फोटो गैलरी">
-        <div className="container">
-          <header className="section-header reveal">
-            <span className="label">स्मृतियाँ</span>
-            <h2 className="h2 hindi">फोटो गैलरी</h2>
-            <div className="divider"><span className="divider-dot" aria-hidden="true" /></div>
-          </header>
-          <div className={styles.galleryGrid}>
-            {galleryImages.map((img, i) => {
-              let itemClass = styles.galleryItem;
-              if (i === 0 || i === 8 || i === 16) itemClass = `${styles.galleryItem} ${styles.galleryItemLarge}`;
-              else if (i === 3 || i === 11 || i === 19) itemClass = `${styles.galleryItem} ${styles.galleryItemWide}`;
-              else if (i === 5 || i === 14 || i === 22) itemClass = `${styles.galleryItem} ${styles.galleryItemTall}`;
-              
-              return (
-                <div key={i} className={`${itemClass} reveal reveal-delay-${(i % 3) + 1}`}>
-                  <Image src={img.src} alt={img.alt} fill className={styles.galleryImg} />
-                  <div className={styles.galleryBadge}>{img.alt}</div>
+      {/* GALLERY PREVIEW */}
+      <section className="py-16 md:py-20 bg-white" aria-label="फोटो गैलरी">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-bold uppercase tracking-wider">
+              स्मृतियाँ
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-yatra leading-tight">
+              झलकियाँ और स्मृतियाँ
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600">
+              जनता के बीच कार्यक्रमों, सम्मेलनों और विकास कार्यों की तस्वीरें।
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((img, i) => (
+              <div key={i} className="group overflow-hidden rounded-3xl border border-pink-100 bg-white shadow-sm hover:shadow-xl transition-all">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-              );
-            })}
+                <div className="p-4 text-center">
+                  <h4 className="text-base font-bold text-slate-800 font-yatra">{img.alt}</h4>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* QUOTE */}
-      <section className={styles.quoteSection} aria-label="प्रेरणादायक उद्धरण">
-        <div className="container">
-          <blockquote className={`${styles.quote} reveal`}>
-            <span className={styles.quoteIcon} aria-hidden="true">❝</span>
-            <p className="hindi">
-              एक महिला जब जागती है, तो पूरा परिवार जागता है। 
-              जब परिवार जागता है, तो समाज बदलता है और देश आगे बढ़ता है।
-            </p>
-            <footer className={`${styles.quoteAuthor} hindi`}>— कल्पना सोनकर</footer>
-          </blockquote>
+      {/* QUOTE SECTION */}
+      <section className="py-16 md:py-20 bg-gradient-to-r from-pink-600 to-rose-700 text-white" aria-label="प्रेरणादायक उद्धरण">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <span className="text-5xl opacity-50 block font-serif">“</span>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-black font-yatra leading-snug">
+            एक महिला जब जागती है, तो पूरा परिवार जागता है। जब परिवार जागता है, तो समाज बदलता है और देश आगे बढ़ता है।
+          </p>
+          <footer className="text-lg font-bold text-pink-100 pt-2">— कल्पना सोनकर</footer>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -24,10 +24,10 @@ export default function Footer() {
   return (
     <footer className={styles.footer} role="contentinfo" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className={styles.tricolor} />
-      
+
       {/* Background Large Logo with 40% Opacity */}
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.4, zIndex: 0, pointerEvents: 'none' }}>
-        <img src="/logo.webp" alt="BJP Background" width="600" height="600" style={{ objectFit: 'contain', filter: 'grayscale(0%)', borderRadius: '50%' }} />
+        <Image src="/logo.webp" alt="BJP Background" width={600} height={600} style={{ objectFit: 'contain', filter: 'grayscale(0%)', borderRadius: "50%" }} />
       </div>
 
       <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
             <p className={styles.tagline}>महिला नेतृत्व – जनसेवा और विकास</p>
             <p className={styles.bio}>
-              जिला पंचायत अध्यक्ष, कौशाम्बी (उत्तर प्रदेश)। 
+              जिला पंचायत अध्यक्ष, कौशाम्बी (उत्तर प्रदेश)।
               भारतीय जनता पार्टी। महिला सशक्तिकरण और सामाजिक विकास के लिए समर्पित।
             </p>
           </div>
@@ -49,7 +49,10 @@ export default function Footer() {
             <ul className={styles.links}>
               <li><Link href="/">होम</Link></li>
               <li><Link href="/about">परिचय</Link></li>
+              <li><Link href="/vision">जीवन दर्शन</Link></li>
               <li><Link href="/achievements">उपलब्धियाँ</Link></li>
+              <li><Link href="/gallery">फोटो गैलरी</Link></li>
+              <li><Link href="/contact">संपर्क</Link></li>
               <li><Link href="/jan-sunwai">जनसुनवाई</Link></li>
             </ul>
           </div>

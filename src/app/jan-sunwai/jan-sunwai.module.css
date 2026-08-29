@@ -3,9 +3,15 @@
 
 .formGrid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
   align-items: start;
+}
+
+.formIntro {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
 }
 
 .divider {
@@ -37,6 +43,7 @@
   padding: 2.5rem;
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1);
   border: 1px solid rgba(194, 24, 91, 0.12);
+  text-align: left;
 }
 
 .formTitle {
@@ -165,7 +172,7 @@
   background: #fff;
   padding: 2rem 1.5rem;
   border-radius: 12px;
-  text-align: center;
+  text-align: left;
   border: 1px solid rgba(194, 24, 91, 0.1);
   box-shadow: 0 4px 6px rgba(0,0,0,0.02);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -212,12 +219,29 @@ a.contactValue:hover { color: #c2185b; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .formGrid { grid-template-columns: 1fr; gap: 2rem; }
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  .formIntro {
+    text-align: center;
+  }
   .formRow { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
-  .formCard { padding: 1.5rem; }
+  .contactCard { text-align: center; }
+  .formCard { padding: 1.25rem; }
+}
+
+@media (max-width: 640px) {
+  .formCard { padding: 1.25rem; }
+  .introList { gap: 0.5rem; }
+  .introList li {
+    text-align: left;
+    font-size: 0.9rem;
+  }
 }
 
 /* Feed Section (Beautiful UI) */
