@@ -5,12 +5,14 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json();
 
-    const validEmail = 'pramendrasinghravi@gmail.com';
-    const validPassword = 'admin_kaushambi@123';
+    const validEmail = 'jkskaushambi@gmail.com';
+    const validPassword = 'Jksup73';
+
+    const normalizedEmail = email ? email.trim().toLowerCase() : '';
 
     const isMatch =
-      (email === validEmail && password === validPassword) ||
-      (process.env.ADMIN_EMAIL && email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) ||
+      (normalizedEmail === validEmail.toLowerCase() && password === validPassword) ||
+      (process.env.ADMIN_EMAIL && normalizedEmail === process.env.ADMIN_EMAIL.trim().toLowerCase() && password === process.env.ADMIN_PASSWORD) ||
       (!email && password === (process.env.ADMIN_PASSWORD || validPassword));
 
     if (isMatch) {
