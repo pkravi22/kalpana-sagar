@@ -11,6 +11,39 @@ const impactBlocks = [
   { icon: '⚖️', title: 'सामाजिक न्याय', metric: '1500+', metricLabel: 'मामले', desc: 'वंचित वर्गों को सरकारी योजनाओं से जोड़ना और उनके अधिकारों की सुरक्षा सुनिश्चित करना।' },
   { icon: '💧', title: 'स्वच्छ जल', metric: '30+', metricLabel: 'गाँव', desc: 'जल जीवन मिशन के तहत ग्रामीण क्षेत्रों में शुद्ध पेयजल की पाइपलाइन का विस्तार।' },
 ];
+const developmentWorks = [
+  {
+    title: 'सड़क एवं संपर्क मार्ग',
+    desc: 'गांवों और प्रमुख मार्गों को जोड़ने के लिए सड़क एवं संपर्क मार्गों का निर्माण व मरम्मत।',
+    stat: '411 कार्य',
+    image: '/Kalpana3.jpeg',
+  },
+  {
+    title: 'लेपन एवं सड़क सुधार',
+    desc: 'ग्रामीण क्षेत्रों में सड़कों का लेपन, नवीनीकरण एवं सुदृढ़ीकरण।',
+    image: '/Kalpana.jpeg',
+  },
+  {
+    title: 'सीसी रोड एवं खड़ंजा',
+    desc: 'गांवों में सीसी रोड एवं खड़ंजा निर्माण से बेहतर आवागमन की सुविधा।',
+    image: '/Kalpana1.jpeg',
+  },
+  {
+    title: 'पुलिया एवं जल निकासी',
+    desc: 'स्थानीय आवागमन और जल निकासी से जुड़े निर्माण कार्य।',
+    image: '/Kalpana2.jpeg',
+  },
+  {
+    title: 'ग्रामीण आधारभूत विकास',
+    desc: 'गांवों में आवश्यक आधारभूत सुविधाओं से जुड़े विभिन्न विकास कार्य।',
+    image: '/Kalpana3.jpeg',
+  },
+  {
+    title: 'जनपद स्तरीय विकास',
+    desc: 'कौशाम्बी के विभिन्न विकासखंडों में आवश्यकता आधारित विकास कार्य।',
+    image: '/DSC_0783.JPG.webp',
+  },
+];
 
 const districtStats = [
   { count: 200, suffix: '+', label: 'स्वयं सहायता समूह' },
@@ -49,6 +82,17 @@ export default function AchievementsClient() {
             </h1>
             <p className="mt-4 text-lg text-pink-50 max-w-2xl mx-auto">
               महिला सशक्तिकरण, ग्रामीण विकास और जनकल्याण के क्षेत्र में किए गए समर्पित प्रयास।
+            </p>
+          </div>
+          <div className="text-center">
+            <p className="text-4xl md:text-5xl font-medium text-white">
+              411+
+            </p>
+            <p className="mt-1 text-sm text-white font-semibold">
+              विकास एवं निर्माण कार्य
+            </p>
+            <p className="text-xs text-white">
+              2021–22 से 2024–25
             </p>
           </div>
         </div>
@@ -115,6 +159,66 @@ export default function AchievementsClient() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="py-16 md:py-20 bg-[#f7f5ee]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-4 py-2 rounded-full bg-orange-100 text-orange-700 text-xs sm:text-sm font-bold">
+              विकास कार्य
+            </span>
+
+            <h2 className="mt-4 text-3xl md:text-4xl font-black text-slate-900 font-yatra">
+              क्षेत्र के विकास की दिशा में कार्य
+            </h2>
+
+            <p className="mt-4 text-slate-600">
+              वित्तीय वर्ष 2021–22 से 2024–25 तक जनपद में कराए गए विभिन्न
+              निर्माण एवं विकास कार्यों की संक्षिप्त झलक।
+            </p>
+
+            <div className="mt-4 mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-orange-500 to-amber-400" />
+          </div>
+
+          {/* Work Cards */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            {developmentWorks.map((work) => (
+              <article
+                key={work.title}
+                className="overflow-hidden rounded-3xl bg-white border border-orange-100 shadow-sm hover:shadow-xl transition-all"
+              >
+
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <div className="p-5">
+                  <h3 className="text-xl font-black text-slate-900 font-yatra">
+                    {work.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                    {work.desc}
+                  </p>
+
+                  {work.stat && (
+                    <span className="inline-block mt-4 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold">
+                      {work.stat}
+                    </span>
+                  )}
+                </div>
+
+              </article>
+            ))}
+
+          </div>
+
         </div>
       </section>
 

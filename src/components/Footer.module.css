@@ -1,9 +1,9 @@
 .footer {
   position: relative;
-  background: rgba(236, 147, 30, 0.98);
+  background: rgba(5, 36, 78, 0.98);
   color: #fff;
   padding-top: 0;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
@@ -111,7 +111,10 @@
   font-size: 0.9rem;
   transition: color 0.2s;
 }
-.links a:hover { color: #c2185b; }
+
+.links a:hover {
+  color: #c2185b;
+}
 
 /* Address */
 .address {
@@ -154,7 +157,10 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-.address a:hover { color: #c2185b; }
+
+.address a:hover {
+  color: #c2185b;
+}
 
 .socials {
   display: flex;
@@ -214,5 +220,9 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .bottom { flex-direction: column; text-align: center; }
+
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
