@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className={styles.topbarInner}>
           <div className={styles.topbarLeft}>
             <span className={styles.topBadge}>
-              <Image src="/logo.webp" alt="BJP logo" width={18} height={18} className={styles.topBadgeLogo} priority />
+              <Image src="/logo.webp" alt="BJP logo" width={20} height={20} className={styles.topBadgeLogo} priority />
               भाजपा कौशाम्बी
             </span>
             <span className={styles.topSlogan}>राष्ट्र प्रथम, सेवा ही संकल्प</span>
@@ -63,7 +63,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <div className={styles.container}>
           <Link href="/" className={styles.brand} aria-label="कल्पना सोनकर – होम">
-            <Image src="/Kalpana.jpeg" alt="Kalpana Sonkar" width={40} height={40} style={{ objectFit: 'cover', borderRadius: '50%' }} priority />
+            <Image src="/Kalpana.jpeg" alt="Kalpana Sonkar" width={30} height={30} style={{ objectFit: 'cover', borderRadius: '50%' }} priority />
             <div className={styles.brandText}>
               <span className={styles.brandName}>कल्पना सोनकर</span>
               <span className={styles.brandRole}>जिला पंचायत अध्यक्ष</span>

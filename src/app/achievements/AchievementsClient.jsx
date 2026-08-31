@@ -72,8 +72,8 @@ export default function AchievementsClient() {
     <div className="bg-[#FCFBF7] text-slate-800">
       {/* PAGE HERO */}
       <section className="relative hero-gradient text-white pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 md:pt-12 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto ">
             <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-100">
               प्रमुख उपलब्धियाँ
             </span>

@@ -39,13 +39,13 @@ export default function HomeClient() {
   return (
     <>
       <section id="home" className="relative hero-gradient text-white pt-4 md:pt-8 pb-16 lg:py-6 overflow-hidden">
+        {/* Replace lotus pattern with logo.webp */}
         <div className="absolute inset-0 opacity-10 pointer-events-none flex justify-center items-center">
-          <Image src="/logo.webp" alt="Background Logo" width={600} height={600} className="w-[600px] h-[600px] rounded-full object-cover" />
+          <img src="/logo.webp" alt="Background Logo" className="w-[600px] h-[600px] rounded-full object-cover" />
         </div>
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FCFBF7] to-transparent" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FCFBF7] to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4  sm:px-6  md:pt-28 lg:px-8 relative z-10">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-4 pb-2 border-b border-white/20">
             <div className="inline-flex items-center gap-2 bg-black/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-white/20 shadow-inner">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
