@@ -3,51 +3,94 @@ import { useState, useEffect } from 'react';
 
 export default function AdminClient() {
   const [auth, setAuth] = useState(false);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const [expandedId, setExpandedId] = useState(null);
   const [savingId, setSavingId] = useState(null);
   const [activeTab, setActiveTab] = useState('All');
-  
+
+  useEffect(() => {
+    const initAuth = async () => {
+      const localAuth = typeof window !== 'undefined' && localStorage.getItem('admin_auth') === 'true';
+      if (localAuth) {
+        setAuth(true);
+      }
+
+      try {
+        const res = await fetch('/api/admin/auth');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated) {
+            setAuth(true);
+            if (typeof window !== 'undefined') localStorage.setItem('admin_auth', 'true');
+            fetchMessages();
+            setCheckingAuth(false);
+            return;
+          }
+        }
+      } catch (err) {
+        console.error('Auth verification error:', err);
+      }
+
+      if (!localAuth) {
+        setAuth(false);
+      } else {
+        fetchMessages();
+      }
+      setCheckingAuth(false);
+    };
+
+    initAuth();
+  }, []);
+
   const login = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/admin/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password })
-    });
-    if (res.ok) {
-      setAuth(true);
-      fetchMessages();
-    } else {
-      alert('Invalid password');
+    setLoginError('');
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      if (res.ok) {
+        setAuth(true);
+        if (typeof window !== 'undefined') localStorage.setItem('admin_auth', 'true');
+        fetchMessages();
+      } else {
+        const data = await res.json();
+        setLoginError(data.error || 'अमान्य ईमेल या पासवर्ड');
+      }
+    } catch (err) {
+      setLoginError('लॉगिन विफल। कृपया पुनः प्रयास करें।');
     }
   };
 
   const logout = async () => {
+    if (typeof window !== 'undefined') localStorage.removeItem('admin_auth');
     await fetch('/api/admin/auth', { method: 'DELETE' });
     setAuth(false);
   };
 
   const fetchMessages = async () => {
     setLoading(true);
-    const res = await fetch('/api/admin/messages');
-    if (res.ok) {
-      const data = await res.json();
-      setMessages(data);
+    try {
+      const res = await fetch('/api/admin/messages');
+      if (res.ok) {
+        const data = await res.json();
+        setMessages(data);
+      } else if (res.status === 401) {
+        if (typeof window !== 'undefined') localStorage.removeItem('admin_auth');
+        setAuth(false);
+      }
+    } catch (err) {
+      console.error('Failed to fetch messages:', err);
     }
     setLoading(false);
   };
-
-  useEffect(() => {
-    fetch('/api/admin/messages').then(res => {
-      if (res.ok) {
-        setAuth(true);
-        res.json().then(data => setMessages(data));
-      }
-    });
-  }, []);
 
   const updateMessage = async (id, updates) => {
     setSavingId(id);
@@ -62,13 +105,35 @@ export default function AdminClient() {
     setSavingId(null);
   };
 
+  if (checkingAuth && !auth) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6' }}>
+        <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#4b5563' }}>सत्यापन हो रहा है...</p>
+      </div>
+    );
+  }
+
   if (!auth) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6' }}>
         <div style={{ background: 'white', padding: '3rem', borderRadius: '16px', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', maxWidth: '400px', width: '100%', textAlign: 'center' }}>
           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔐</div>
-          <h2 style={{ marginBottom: '2rem', color: '#111827', fontSize: '1.5rem', fontWeight: 'bold', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>Admin Secure Login</h2>
+          <h2 style={{ marginBottom: '1.5rem', color: '#111827', fontSize: '1.5rem', fontWeight: 'bold', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>Admin Secure Login</h2>
+          
+          {loginError && (
+            <div style={{ padding: '0.75rem', background: '#fee2e2', color: '#991b1b', borderRadius: '8px', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              {loginError}
+            </div>
+          )}
+
           <form onSubmit={login} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <input 
+              type="email" 
+              placeholder="Email (e.g. Jkskaushambi@gmail.com)" 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              style={{ padding: '0.85rem', borderRadius: '8px', border: '1px solid #d1d5db', fontSize: '1rem', outline: 'none' }} 
+            />
             <input 
               type="password" 
               placeholder="Enter Password" 

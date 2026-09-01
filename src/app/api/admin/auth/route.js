@@ -1,6 +1,19 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
+export async function GET() {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('admin_token');
+    if (token && token.value === 'authenticated') {
+      return NextResponse.json({ authenticated: true });
+    }
+    return NextResponse.json({ authenticated: false }, { status: 401 });
+  } catch (err) {
+    return NextResponse.json({ authenticated: false }, { status: 500 });
+  }
+}
+
 export async function POST(request) {
   try {
     const { email, password } = await request.json();
@@ -22,7 +35,7 @@ export async function POST(request) {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
         path: '/',
-        maxAge: 60 * 60 * 24,
+        maxAge: 60 * 60 * 24 * 7,
       });
       return NextResponse.json({ success: true });
     }
@@ -38,3 +51,4 @@ export async function DELETE() {
   cookieStore.delete('admin_token');
   return NextResponse.json({ success: true });
 }
+
