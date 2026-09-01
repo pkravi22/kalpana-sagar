@@ -18,17 +18,18 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json();
 
-    const validEmail = 'jkskaushambi@gmail.com';
-    const validPassword = 'Jksup73';
+    const adminEmail = process.env.ADMIN_EMAIL ? process.env.ADMIN_EMAIL.trim().toLowerCase() : '';
+    const adminPassword = process.env.ADMIN_PASSWORD || '';
+
+    if (!adminPassword) {
+      return NextResponse.json({ error: 'सर्वर प्रमाणीकरण विन्यास अनुपलब्ध है' }, { status: 500 });
+    }
 
     const normalizedEmail = email ? email.trim().toLowerCase() : '';
+    const isEmailMatch = !email || (adminEmail && normalizedEmail === adminEmail);
+    const isPasswordMatch = password === adminPassword;
 
-    const isMatch =
-      (normalizedEmail === validEmail.toLowerCase() && password === validPassword) ||
-      (process.env.ADMIN_EMAIL && normalizedEmail === process.env.ADMIN_EMAIL.trim().toLowerCase() && password === process.env.ADMIN_PASSWORD) ||
-      (!email && password === (process.env.ADMIN_PASSWORD || validPassword));
-
-    if (isMatch) {
+    if (isEmailMatch && isPasswordMatch) {
       const cookieStore = await cookies();
       cookieStore.set('admin_token', 'authenticated', {
         httpOnly: true,
@@ -51,4 +52,5 @@ export async function DELETE() {
   cookieStore.delete('admin_token');
   return NextResponse.json({ success: true });
 }
+
 
