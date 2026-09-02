@@ -45,18 +45,18 @@ export default function HomeClient() {
         </div>
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FCFBF7] to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4  sm:px-6  pt-16 md:pt-28 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-3  sm:px-6   md:pt-0 lg:px-8 relative z-10">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-4 pb-2 border-b border-white/20">
-            <div className="inline-flex items-center gap-2 bg-black/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-white/20 shadow-inner">
+            <div className="inline-flex items-center gap-[2px] md:gap-2 bg-black/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-white/20 shadow-inner">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
               <span>भारतीय जनता पार्टी जिंदाबाद</span>
               <span className="text-amber-300">|</span>
               <span className="text-pink-100 font-normal">कौशाम्बी (उत्तर प्रदेश)</span>
             </div>
 
-            <div className="flex items-center gap-3 text-xs bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/20">
+            <div className="flex items-center gap-3 text-xs bg-white/10 backdrop-blur-md px-1 py-1 rounded-full border border-white/20">
               <span className="font-bold tracking-wide flex items-center gap-1.5 text-white">
-                <i className="fa-solid fa-award text-amber-300" /> सबका साथ, सबका विकास, सबका विश्वास
+                <i className="fa-solid fa-award text-amber-300" /> सबका साथ, सबका विकास,सबका विश्वास,सबका प्रयास
               </span>
             </div>
           </div>

@@ -52,12 +52,12 @@ const stats = [
 export default function VisionClient() {
   return (
     <div className="bg-[#FCFBF7] text-slate-800">
-      <section className="relative hero-gradient text-white pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden">
+      <section className="relative hero-gradient text-white pt-8 pb-16 md:pt-8 md:pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none flex justify-center items-center">
           <Image src="/logo.webp" alt="Background Logo" width={650} height={650} className="w-[650px] h-[650px] rounded-full object-cover" />
         </div>
         <div className="absolute -top-20 -right-20 w-80 h-80 bg-pink-300/20 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 md:px-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 -pt-8 md:px-16 relative z-10">
           <div className="max-w-3xl">
             <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-xs font-bold uppercase tracking-wider text-pink-100">
               जीवन दर्शन

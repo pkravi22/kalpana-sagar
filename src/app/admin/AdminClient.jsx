@@ -21,7 +21,7 @@ export default function AdminClient() {
       }
 
       try {
-        const res = await fetch('/api/admin/auth');
+        const res = await fetch('/api/admin/auth', { credentials: 'include' });
         if (res.ok) {
           const data = await res.json();
           if (data.authenticated) {
@@ -54,7 +54,8 @@ export default function AdminClient() {
       const res = await fetch('/api/admin/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
+        credentials: 'include'
       });
       if (res.ok) {
         setAuth(true);
@@ -71,14 +72,14 @@ export default function AdminClient() {
 
   const logout = async () => {
     if (typeof window !== 'undefined') localStorage.removeItem('admin_auth');
-    await fetch('/api/admin/auth', { method: 'DELETE' });
+    await fetch('/api/admin/auth', { method: 'DELETE', credentials: 'include' });
     setAuth(false);
   };
 
   const fetchMessages = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/admin/messages');
+      const res = await fetch('/api/admin/messages', { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         setMessages(data);
@@ -97,7 +98,8 @@ export default function AdminClient() {
     const res = await fetch('/api/admin/messages', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, ...updates })
+      body: JSON.stringify({ id, ...updates }),
+      credentials: 'include'
     });
     if (res.ok) {
       setMessages(messages.map(m => m.id === id ? { ...m, ...updates } : m));
