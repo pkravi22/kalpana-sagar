@@ -31,6 +31,7 @@ export async function GET() {
   try {
     const doc = await getDoc();
     const sheet = doc.sheetsByIndex[0];
+    await sheet.loadHeaderRow();
     const rows = await sheet.getRows();
     
     // Return all submitted rows (not just approved ones)
@@ -61,6 +62,7 @@ export async function POST(request) {
     const body = await request.json();
     const doc = await getDoc();
     const sheet = doc.sheetsByIndex[0];
+    await sheet.loadHeaderRow();
 
     const newRow = {
       ID: Date.now().toString(),

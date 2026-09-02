@@ -129,7 +129,7 @@ export default function VisionClient() {
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-pink-600 to-rose-400 mx-auto rounded-full" />
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {priorities.map((item) => (
               <article key={item.title} className="group rounded-3xl border border-pink-100 bg-[#fffaf8] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-100 to-rose-50 text-2xl flex items-center justify-center shadow-sm mb-5">
@@ -171,7 +171,7 @@ export default function VisionClient() {
             <h2 className="mt-4 text-3xl md:text-4xl font-black font-yatra text-slate-900">परियोजनाओं का निरंतर और टिकाऊ रास्ता</h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {roadmap.map((item) => (
               <div key={item.step} className="relative rounded-3xl border border-pink-100 bg-white p-6 shadow-sm">
                 <div className="absolute -top-3 left-6 inline-flex items-center justify-center w-12 h-12 rounded-full bg-pink-600 text-white font-black shadow-md">

@@ -34,6 +34,7 @@ export async function GET() {
   try {
     const doc = await getDoc();
     const sheet = doc.sheetsByIndex[0];
+    await sheet.loadHeaderRow();
     const rows = await sheet.getRows();
     
     const data = rows.map(row => ({
@@ -53,6 +54,7 @@ export async function GET() {
     
     return NextResponse.json(data);
   } catch (error) {
+    console.error('Error in GET /api/admin/messages:', error);
     return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 });
   }
 }
@@ -67,6 +69,7 @@ export async function PUT(request) {
     
     const doc = await getDoc();
     const sheet = doc.sheetsByIndex[0];
+    await sheet.loadHeaderRow();
     const rows = await sheet.getRows();
     
     const row = rows.find(r => r.get('ID') === id);
@@ -83,6 +86,7 @@ export async function PUT(request) {
     await row.save();
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error('Error in PUT /api/admin/messages:', error);
     return NextResponse.json({ error: 'Failed to update' }, { status: 500 });
   }
 }

@@ -235,7 +235,7 @@ export default function HomeClient() {
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-pink-500 to-amber-400 mx-auto rounded-full" />
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {features.map((item) => (
               <article key={item.title} className="rounded-[1.75rem] border border-pink-100 bg-[#fffaf8] p-6 shadow-sm hover:shadow-xl transition-shadow card-hover-effect">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-100 to-amber-50 text-3xl flex items-center justify-center shadow-sm text-pink-700">
@@ -261,7 +261,7 @@ export default function HomeClient() {
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-pink-500 to-amber-400 mx-auto rounded-full" />
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <div className="rounded-[1.75rem] border border-pink-100 bg-white p-6 shadow-sm">
               <div className="text-3xl mb-3">🌸</div>
               <h3 className="text-2xl font-black text-slate-900 font-yatra">महिला सशक्तिकरण</h3>
@@ -293,7 +293,7 @@ export default function HomeClient() {
             <div className="mt-4 w-24 h-1 bg-gradient-to-r from-pink-500 to-amber-400 mx-auto rounded-full" />
           </div>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {gallery.map((image, index) => (
               <div key={image.src + index} className="overflow-hidden rounded-[1.5rem] border border-pink-100 bg-white shadow-sm hover:shadow-xl transition-all">
                 <Image src={image.src} alt={image.title} width={800} height={600} className="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
