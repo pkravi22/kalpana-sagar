@@ -18,10 +18,10 @@ const features = [
 ];
 
 const gallery = [
-  { src: '/Kalpana.jpeg', title: 'जनसभा' },
-  { src: '/Kalpana1.jpeg', title: 'महिला कार्यक्रम' },
-  { src: '/Kalpana2.jpeg', title: 'जनसेवा' },
-  { src: '/Kalpana3.jpeg', title: 'BJP कार्यक्रम' },
+  { src: '/Adobe Scan 08 Sept 2026_page-0001.jpg', title: 'जनसभा' },
+  { src: '/Adobe Scan 08 Sept 2026_page-0003.jpg', title: 'महिला कार्यक्रम' },
+  { src: '/Adobe Scan 08 Sept 2026_page-0007.jpg', title: 'जनसेवा' },
+  { src: '/Adobe Scan 08 Sept 2026_page-0001.jpg', title: 'BJP कार्यक्रम' },
   { src: '/DSC_1042.JPG.webp', title: 'महिला सशक्तिकरण गोष्ठी' },
   { src: '/DSC_1703.JPG.webp', title: 'विकास कार्य निरीक्षण' },
   { src: '/DSC_2148 - Copy - Copy.JPG.webp', title: 'विद्यालय पुरस्कार वितरण' },
