@@ -4,18 +4,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const images = [
-  { type: 'sangathan', src: '/Kalpana.jpeg', title: 'जनसभा', desc: 'कौशाम्बी की जनता के बीच जनसंपर्क और विश्वास का अनुभव।' },
+  { type: 'sangathan', src: '/Adobe Scan 08 Sept 2026_page-0001.jpg', title: 'जनसभा', desc: 'कौशाम्बी की जनता के बीच जनसंपर्क और विश्वास का अनुभव।' },
   { type: 'vikas', src: '/Kalpana1.jpeg', title: 'महिला कार्यक्रम', desc: 'महिला सशक्तिकरण और सामाजिक न्याय की दिशा में समर्पित प्रयास।' },
   { type: 'janseva', src: '/Kalpana2.jpeg', title: 'जनसेवा', desc: 'दूरदराज क्षेत्रों में सेवा, सहायता और सहयोग का भाव।' },
-  { type: 'sangathan', src: '/Kalpana3.jpeg', title: 'BJP कार्यक्रम', desc: 'संगठन, विचार और कार्य की एकजुटता का प्रेरक दृश्य।' },
+  { type: 'sangathan', src: '/Adobe Scan 08 Sept 2026_page-0003.jpg', title: 'BJP कार्यक्रम', desc: 'संगठन, विचार और कार्य की एकजुटता का प्रेरक दृश्य।' },
   { type: 'janseva', src: '/DSC_1042.JPG.webp', title: 'महिला सशक्तिकरण गोष्ठी', desc: 'महिलाओं के लिए नेतृत्व, मानसिकता और अवसरों का विस्तार।' },
   { type: 'vikas', src: '/DSC_1703.JPG.webp', title: 'विकास कार्य निरीक्षण', desc: 'बुनियादी सुविधाओं और जन कल्याण के लिए सतत प्रयास।' },
   { type: 'janseva', src: '/DSC_2148 - Copy - Copy.JPG.webp', title: 'विद्यालय पुरस्कार वितरण', desc: 'बेटी बचाओ, बेटी पढ़ाओ और शिक्षा के प्रति संकल्प।' },
   { type: 'janseva', src: '/DSC_2830.JPG.webp', title: 'आवास योजना वितरण', desc: 'सामाजिक सुरक्षा और जीवन की गुणवत्ता में सुधार।' },
   { type: 'sangathan', src: '/DSC_3278.JPG.webp', title: 'नारी शक्ति वंदन', desc: 'महिलाओं की क्षमता, सम्मान और समर्थन का संदेश।' },
   { type: 'vikas', src: '/DSC_1042.JPG.webp', title: 'ग्रामीण विकास', desc: 'कौशाम्बी में विकास और बेहतर जीवन की दिशा में कदम।' },
+    { type: 'sangathan', src: '/Adobe Scan 08 Sept 2026_page-0007.jpg', title: 'BJP कार्यक्रम', desc: 'संगठन, विचार और कार्य की एकजुटता का प्रेरक दृश्य।' },
   { type: 'sangathan', src: '/DSC_1819.JPG.webp', title: 'कार्यकर्ता सम्मेलन', desc: 'संगठन की ऊर्जा, समर्पण और सेवा भावना का मंच।' },
   { type: 'janseva', src: '/DSC_2855.JPG.webp', title: 'स्वास्थ्य शिविर', desc: 'आमजन तक स्वास्थ्य, जागरूकता और सहयोग की पहुँच।' },
+    { type: 'sangathan', src: '/Adobe Scan 08 Sept 2026_page-0009.jpg', title: 'BJP कार्यक्रम', desc: 'संगठन, विचार और कार्य की एकजुटता का प्रेरक दृश्य।' },
 ];
 
 const filters = [
