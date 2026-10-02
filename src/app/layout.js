@@ -7,7 +7,7 @@ import './globals.css';
 // Set to true  -> Shows temporary "We will be live in 2 days" page
 // Set to false -> Instantly restores the full live website!
 // -------------------------------------------------------------
-const IS_UNDER_MAINTENANCE = true;
+const IS_UNDER_MAINTENANCE = false;
 
 const notoSans = Noto_Sans_Devanagari({
   subsets: ['latin', 'devanagari'],
